@@ -1,0 +1,3 @@
+/* PAVCITY 138: the ALT-eye sat at the right of the name tag, on top of the VIP / staff badges. It now sits
+   centred under the health/armor bars, where nothing else is drawn. */
+html body #pn-game .pn-tag .pav-head-eye{right:auto!important;left:50%!important;top:auto!important;bottom:-36px!important;transform:translateX(-50%)!important}

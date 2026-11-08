@@ -1,0 +1,12 @@
+/* A single flow stack prevents account, wanted stars and ammunition overlaps. */
+#pn-game .pn-live>.p84-status-stack{position:fixed!important;top:max(20px,env(safe-area-inset-top))!important;right:max(22px,env(safe-area-inset-right))!important;width:min(244px,43vw)!important;max-width:calc(100vw - 36px)!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:9px!important;pointer-events:none;contain:layout style;z-index:12}
+#pn-game .pn-live>.p84-status-stack>.pn-top-hud{position:relative!important;inset:auto!important;width:100%!important;max-width:100%!important;transform:none!important;margin:0!important}
+#pn-game .pn-live>.p84-status-stack>.p82-ammo{position:relative!important;inset:auto!important;width:100%!important;max-width:100%!important;margin:0!important;padding:3px 2px!important;align-self:flex-end!important;transform:none!important}
+#pn-game .p84-wanted{display:flex!important;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;background:#131824eb;border:1px solid #91bfff44;border-radius:9px;color:#f8f6ff;font:600 9px/1.4 'Segoe UI',sans-serif;letter-spacing:1px;box-shadow:0 3px 12px #0003;overflow:hidden;min-width:0}
+#pn-game .p84-wanted[hidden]{display:none!important}
+#pn-game .p84-stars{display:flex;gap:3px;min-width:0}
+#pn-game .p84-stars svg{width:19px;height:19px;fill:#45485a;stroke:#050914;stroke-width:1;flex:none}
+#pn-game .p84-stars svg.active{fill:#fff7ee;stroke:#c7dfff}
+#pn-game .p84-wanted b{font-size:10px;letter-spacing:0;white-space:nowrap;font-variant-numeric:tabular-nums;color:#b8ceef}
+@media(max-width:600px){#pn-game .pn-live>.p84-status-stack{top:12px!important;right:12px!important;width:43vw!important;gap:6px!important}#pn-game .p84-wanted{padding:7px 8px;gap:5px}#pn-game .p84-wanted>span{display:none}#pn-game .p84-stars{gap:2px}#pn-game .p84-stars svg{width:17px;height:17px}}
+@media(prefers-reduced-motion:reduce){#pn-game .p84-wanted{transition:none!important}}

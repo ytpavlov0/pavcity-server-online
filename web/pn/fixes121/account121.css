@@ -1,0 +1,13 @@
+/* PAVCITY account 121 panel (inherits the glass116 panel/buttons/inputs). */
+html body #pn-game .rp-overlay.pav-account121 .rp-window{max-width:620px!important}
+html body #pn-game .a121{display:grid;gap:12px;color:#f6f1ff;font:500 13px/1.45 PAVSource,'Segoe UI',sans-serif}
+html body #pn-game .a121 section{padding:14px 16px}
+html body #pn-game .a121 small{display:block;margin-bottom:6px;color:var(--v6-pink,#ff5fa8);font-weight:800;font-size:10.5px;letter-spacing:.2em}
+html body #pn-game .a121 h3{margin:0 0 4px;font:800 18px/1.2 PAVSource,'Segoe UI',sans-serif;color:#fff}
+html body #pn-game .a121 p{margin:6px 0 0;color:rgba(246,241,255,.6);font-size:12px}
+html body #pn-game .a121 form{display:grid;grid-template-columns:1fr auto;gap:8px}
+html body #pn-game .a121 form[data-f=password]{grid-template-columns:1fr 1fr 1fr}
+html body #pn-game .a121 form[data-f=password] button{grid-column:1/-1}
+html body #pn-game .a121 input{width:100%;padding:10px 12px;border-radius:12px;color:#fff;font:inherit}
+html body #pn-game .a121-open{margin-top:10px;width:100%;padding:11px 14px!important;border-radius:12px!important;border:1px solid rgba(255,255,255,.16)!important;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.03))!important;color:#f6f1ff!important;font-weight:700!important;cursor:pointer}
+@media (max-width:600px){html body #pn-game .a121 form,html body #pn-game .a121 form[data-f=password]{grid-template-columns:1fr}}

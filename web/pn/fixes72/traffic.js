@@ -1,0 +1,48 @@
+/* Ambient adoption and input-driven, server-validated lockpicking. */
+(()=>{'use strict';let active=null;
+function stopKeys(e){if(!active||e.ctrlKey||e.metaKey||['F5','F11','F12'].includes(e.code))return;e.preventDefault();e.stopImmediatePropagation();if(e.type!=='keydown'||e.repeat)return;if(e.code==='Escape')active.close();else if(e.code==='ArrowLeft'||e.code==='ArrowRight')active.press(e.code==='ArrowLeft'?'left':'right');}
+addEventListener('keydown',stopKeys,true);addEventListener('keyup',stopKeys,true);
+addEventListener('pav-game-created',({detail:game})=>queueMicrotask(()=>{
+ let pending=false,picking=false,lastAttempt=0,unmanagedRetry=0;const errors=new Map();
+ const heap=()=>game.bridge?{a:new Int32Array(game.bridge.memory.buffer,game.bridge.block,16384),f:new Float32Array(game.bridge.memory.buffer,game.bridge.block,16384)}:null;
+ game.quietVehicleError=message=>{const now=Date.now();if(now-(errors.get(message)||0)<5000)return;errors.set(message,now);if(errors.size>20)errors.delete(errors.keys().next().value);game.toast?.(message,true);};
+ function candidate(){const h=heap();if(!h)return null;const {a,f}=h,seq=Atomics.load(a,6208);if(seq&1||!a[6209])return null;
+  const v={handle:a[6209],model_hash:a[6210]>>>0,locked:!!a[6211],ambient_driver:!!a[6226],x:f[6212],y:f[6213],z:f[6214],heading:f[6215],body:f[6216],seats:a[6217],seat:a[6222],distance:f[6223],inside:!!a[6224],actualSeat:a[6225],plate:Array.from(new Uint8Array(game.bridge.memory.buffer,game.bridge.block+6218*4,16)).map(c=>String.fromCharCode(c)).join('').split('\0')[0].trim()};
+  if(a[6230]){const c=Array.from(a.slice(6231,6240)),mask=c[2];v.paint43={primary:c[0],secondary:c[1],primary_rgb:mask&1?c.slice(3,6):null,secondary_rgb:mask&2?c.slice(6,9):null};} return seq===Atomics.load(a,6208)&&v.distance<=7?v:null;
+ }
+ game.trafficCandidate=candidate;
+ async function adopt(v){const initialBridge=game.bridge;const r=await game.api('/api/vehicles/traffic-register',v),h=heap();if(!h||game.bridge!==initialBridge)throw Error('Oyun bağlantısı kapandı.');
+  h.a[120]=r.vehicle.id;h.a[121]=v.handle;const seq=Atomics.add(h.a,119,1)+1;game.addVehicle(r.vehicle);
+  const until=performance.now()+4000;while(Atomics.load(h.a,122)!==seq){if(game.bridge!==initialBridge||!game.hud.isConnected)throw Error('Araç işlemi iptal edildi.');if(performance.now()>until)throw Error('Trafik aracı motora bağlanamadı; tekrar dene.');await new Promise(r=>setTimeout(r,40));}
+  if(h.a[123]!==1)throw Error('Araç uzaklaştı; yanına yaklaş ve tekrar dene.');return r.vehicle;
+ }
+ async function closest(door=false){const native=candidate(),registered=game.nearestVehicle();
+  if(native&&(!registered||native.distance<registered.distance)){if(door&&native.seat<-1)throw Error('Bir araç kapısına yaklaş (5 m).');return {v:await adopt(native),seat:door?native.seat:-1};}
+  if(!registered)throw Error('Yakında araç yok. Bir araca yaklaş (7 m).');const h=heap();if(door&&h.a[114]!==registered.id)throw Error('Bir araç kapısına yaklaş (5 m).');return {v:registered,seat:door?h.a[115]:undefined};
+ }
+ game.enterNearby=async(id,seat,door=false)=>{if(active||pending||performance.now()-lastAttempt<650)return;lastAttempt=performance.now();pending=true;
+  try{if(game.vehicle)return await game.vehicleAction('exit');const target=id?{v:game.vehicles.find(v=>v.id===Number(id)),seat:seat===undefined?undefined:Number(seat)}:await closest(door);if(!target.v)throw Error('Araç bulunamadı.');
+   game.closeFeatures?.();game.closeActions?.();const h=heap();if(target.v.locked&&target.v.owner===0&&h.a[7602]===target.v.id){const r=await game.api('/api/vehicles/traffic-register',{...target.v,model_hash:h.a[7603]>>>0,seats:h.a[7604],locked:true,ambient_driver:true});target.v=r.vehicle;game.addVehicle(r.vehicle);}if(target.v.locked){const access=await game.api('/api/vehicles/entry-access',{id:target.v.id});if(!access.has_key&&access.may_lockpick)return await game.lockpick(target.v.id,target.seat,true);}return await game.vehicleAction('enter',target.v.id,target.seat);
+  }finally{pending=false;}
+ };
+ game.nearestDoor=()=>game.enterNearby(undefined,undefined,true);
+ game.adoptOccupiedTraffic=async()=>{if(pending||active||performance.now()<unmanagedRetry||game.vehicle)return;const v=candidate();if(!v?.inside)return;unmanagedRetry=performance.now()+7000;pending=true;try{const registered=await adopt(v);if(registered.locked){game.quietVehicleError('Bu araç kilitli; önce maymuncukla aç.');return;}await game.vehicleAction('enter',registered.id,v.actualSeat>=-1?v.actualSeat:-1);}catch(e){game.quietVehicleError(e.message);}finally{pending=false;}};
+ game.lockpick=async(id,seat,enter=false)=>{
+  if(active||picking)return;if(game.isDead)throw Error('Maymuncuk için hayatta olmalısın.');let v=id?game.vehicles.find(v=>v.id===Number(id)):(await closest()).v;if(!v)throw Error('Yakındaki aracı seç.');
+  let first;picking=true;try{first=await game.api('/api/vehicles/break-start',{id:v.id});}finally{picking=false;}game.closeFeatures?.();game.closeActions?.();game.closeOverlay?.();game.setMenu(false);game.release();game.uiOpen=true;
+  const panel=document.createElement('section');panel.className='pav-lockpick';panel.innerHTML='<div class="pav-lockpick-card"><header><small>PAVCITY / MAYMUNCUK</small><button aria-label="Maymuncuk denemesini kapat">×</button></header><h2>Kilidi aç.</h2><p class="pav-lockpick-car"></p><div class="pav-lockpick-steps"></div><div class="pav-lockpick-direction" aria-live="polite"></div><div class="pav-lockpick-time"><i></i></div><p class="pav-lockpick-message" role="status"></p><div class="pav-lockpick-buttons"><button data-dir="left" aria-label="Sola bas">← <kbd>Sol</kbd></button><button data-dir="right" aria-label="Sağa bas">→ <kbd>Sağ</kbd></button></div><footer>Gösterilen yöne zamanında bas · ESC ile vazgeç</footer></div>';game.hud.append(panel);panel.querySelector('.pav-lockpick-car').textContent=v.model.toUpperCase()+' · '+v.plate;
+  let state=first,busy=false,ended=false,ready=0,deadline=0,timer;const direction=panel.querySelector('.pav-lockpick-direction'),message=panel.querySelector('[role=status]'),bar=panel.querySelector('.pav-lockpick-time i'),buttons=[...panel.querySelectorAll('[data-dir]')];
+  function render(r){state=r;ready=performance.now()+r.ready_in_ms;deadline=performance.now()+r.timeout_ms;direction.textContent=r.completed?'✓':r.key==='left'?'←':'→';panel.querySelector('.pav-lockpick-steps').replaceChildren(...Array.from({length:r.total},(_,i)=>{const n=document.createElement('i');n.className=i<r.step?'done':i===r.step?'current':'';return n;}));message.textContent='Pimi hizala; ok aydınlanınca bas.';}
+  function cancel(){game.api('/api/vehicles/break-cancel',{id:v.id,challenge:state.challenge}).catch(()=>{});}
+  function close(){clearInterval(timer);if(!ended)cancel();ended=true;panel.remove();active=null;game.uiOpen=false;document.getElementById('canvas')?.focus();}
+  function fail(text){if(ended)return;ended=true;clearInterval(timer);cancel();direction.textContent='×';panel.classList.add('failed');message.textContent=text;buttons.forEach(b=>b.disabled=true);panel.querySelector('footer').textContent='Tekrar denemek için pencereyi kapat ve F’ye bas.';}
+  async function press(key){if(busy||ended||performance.now()<ready)return;busy=true;buttons.forEach(b=>b.disabled=true);try{const r=await game.api('/api/vehicles/break-step',{id:v.id,challenge:state.challenge,step:state.step,key});if(ended||!panel.isConnected)return;render(r);if(r.completed){const done=await game.api('/api/vehicles/break-finish',{id:v.id,challenge:r.challenge});game.addVehicle(done.vehicle);ended=true;close();game.toast?.(done.notice);if(enter)await game.vehicleAction('enter',v.id,seat).catch(e=>game.quietVehicleError(e.message));}}catch(e){fail(e.message);}finally{busy=false;}}
+  active={close,press};panel.querySelector('header button').onclick=close;buttons.forEach(b=>b.onclick=()=>press(b.dataset.dir));render(first);
+  timer=setInterval(()=>{if(ended)return;const h=heap(),now=performance.now();if(!h||game.isDead||Math.hypot(v.x-h.f[16],v.y-h.f[17],v.z-h.f[18])>5){fail('Kilitten uzaklaştın. Deneme iptal edildi.');return;}if(!busy&&now>deadline){fail('Süre doldu. Kilit açılmadı.');return;}const usable=!busy&&now>=ready;direction.classList.toggle('ready',usable);buttons.forEach(b=>b.disabled=!usable);bar.style.transform='scaleX('+Math.max(0,Math.min(1,(deadline-now)/2700))+')';},50);
+ };
+ const original=game.targets;game.targets=()=>{original();const list=game.hud.querySelector('.pav-target-list');if(!list)return;const traffic=candidate();if(traffic){const box=document.createElement('article'),title=document.createElement('h3'),b=document.createElement('button');title.textContent='Sokak aracı · '+traffic.plate+' · '+(traffic.locked?'Kilitli':'Açık');b.textContent=traffic.locked?'Maymuncukla aç':'Bin / sürücüyü indir';b.onclick=()=>game.enterNearby().catch(e=>game.quietVehicleError(e.message));box.append(title,b);list.prepend(box);}
+  for(const v of game.vehicles.filter(v=>v.locked&&!v.job&&game.nearestVehicle()?.id===v.id)){const b=document.createElement('button');b.textContent=v.plate+' · Maymuncukla aç';b.onclick=()=>game.lockpick(v.id).catch(e=>game.quietVehicleError(e.message));list.append(b);}
+ };
+ const oldToast=game.toast;game.toast=(text,bad=false)=>{const key='toast:'+text,now=Date.now();if(now-(errors.get(key)||0)<1500)return;errors.set(key,now);if(errors.size>40)errors.delete(errors.keys().next().value);oldToast(text,bad);};
+ addEventListener('blur',()=>active?.close());addEventListener('visibilitychange',()=>{if(document.hidden)active?.close();});addEventListener('pav-game-stop',()=>active?.close());
+}));})();

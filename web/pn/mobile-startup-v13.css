@@ -1,0 +1,11 @@
+#pav-boot .pav-mobile-recovery{max-width:min(560px,85vw);color:#e6d589;border:1px solid #626543;background:#17241a;padding:8px 12px;border-radius:6px;font-size:11px;line-height:1.4;margin:6px 0;overflow-wrap:anywhere}
+.pav-mobile #pav-boot{box-sizing:border-box;padding:max(12px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));overflow-y:auto;scrollbar-width:none}
+.pav-mobile #pav-boot::-webkit-scrollbar{display:none}
+.pav-mobile #pav-boot .pav-boot-glow{display:none}
+.pav-mobile #pav-boot .pav-boot-logo{width:72px;height:72px;margin-bottom:8px;flex-shrink:0}
+.pav-mobile #pav-boot h1{font-size:34px;margin:6px}
+.pav-mobile #pav-boot .pav-boot-track{margin:12px 0 8px;flex-shrink:0}
+.pav-mobile #pav-boot .pav-boot-stage{margin:12px 0 6px}
+.pav-mobile #pav-boot .pav-music{margin:10px}
+.pav-mobile-start{position:relative;z-index:1;border:1px solid #c5f07a;border-radius:6px;background:#c5f07a;color:#142117;padding:12px 24px;min-height:44px;font:700 12px PAV,Arial,sans-serif;cursor:pointer;flex-shrink:0}
+@media(max-height:500px){#pav-boot .pav-mobile-recovery{font-size:10px;padding:5px 8px;margin:4px 0;max-height:44px;overflow:auto}}

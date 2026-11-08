@@ -1,0 +1,20 @@
+{
+  "package": "mobile-office208",
+  "kind": "office",
+  "target": {
+    "x": -1006.5,
+    "y": -480.5,
+    "z": 49.94147491455078,
+    "heading": 0,
+    "ipl": ""
+  },
+  "floor_z": 48.94147491455078,
+  "scene_sha256": "cbab59cc589e4d34e78da6eec7f34609b75125822134a47abe19bc8651f543c6",
+  "ground_sha256": "27362771360a694c5c554bca12edd5ddcf00471eff78ef9230daff4c2be1efb4",
+  "source": "bh1_03_interior_v_58_sol_office_milo_.ymap",
+  "models": 28,
+  "placements": 30,
+  "transfer_bytes": 7389420,
+  "asset_budget_bytes": 57412528,
+  "device_acceptance": false
+}

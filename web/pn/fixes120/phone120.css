@@ -1,0 +1,71 @@
+/* PAVCITY phone 120: iPhone 17 Pro Max / latest-iOS look (titanium frame, Dynamic Island, liquid
+ * glass dock/widgets/buttons, large titles, inset grouped lists, iMessage bubbles, FaceTime-style
+ * call screen, Stocks-style exchange). Visual layer only: phone.js logic and DOM are unchanged. */
+html body #pn-game .pav-source-phone{--ip-glass:rgba(255,255,255,.14);--ip-glass-2:rgba(255,255,255,.22);--ip-line:rgba(255,255,255,.18);--ip-blue:#0a84ff;--ip-green:#30d158;--ip-red:#ff453a;--ip-text:#fff;--ip-sub:rgba(235,235,245,.6);--ip-font:-apple-system,'SF Pro Display','Segoe UI Variable Display','Segoe UI',PAVSource,sans-serif}
+/* device: natural titanium band, thin black bezel, larger corner radius */
+html body #pn-game .pav-source-phone .pav-phone-device{border-radius:62px!important;padding:5px!important;background:linear-gradient(145deg,#d9d4cc 0%,#8f8a84 18%,#e9e4dc 34%,#6e6a66 52%,#cfc9c0 70%,#7d7974 86%,#e6e0d7 100%)!important;box-shadow:0 0 0 1px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.35),0 30px 80px rgba(0,0,0,.6),0 8px 22px rgba(0,0,0,.35)!important;animation:ip120In .38s cubic-bezier(.2,.9,.25,1) both}
+@keyframes ip120In{from{opacity:0;transform:translateY(40px) rotate(1.5deg) scale(.96)}to{opacity:1;transform:none}}
+html body #pn-game .pav-source-phone .pav-phone-screen{border-radius:57px!important;border:7px solid #050506!important;font-family:var(--ip-font)!important;color:var(--ip-text)!important;-webkit-font-smoothing:antialiased}
+/* Dynamic Island */
+html body #pn-game .pav-source-phone .pav-phone-island{top:11px!important;width:118px!important;height:34px!important;border-radius:22px!important;background:#000!important;box-shadow:0 0 0 1px rgba(255,255,255,.04)!important;transition:width .35s cubic-bezier(.2,.9,.25,1),height .35s cubic-bezier(.2,.9,.25,1)!important}
+html body #pn-game .pav-source-phone .pav-phone-island::after{right:13px!important;top:12px!important;width:10px!important;height:10px!important;background:radial-gradient(circle at 35% 35%,#2f4d66,#0a1220 70%)!important;border:0!important}
+html body #pn-game .pav-source-phone .pav-phone-screen[data-app=calls] .pav-phone-island{width:180px!important}
+/* status bar */
+html body #pn-game .pav-source-phone .pav-phone-status{padding:18px 30px 0!important;height:50px!important;font:600 14px/1 var(--ip-font)!important;letter-spacing:-.01em;color:#fff!important}
+/* lock screen: big light clock, glass notifications, unlock pill */
+html body #pn-game .pav-source-phone .pav-phone-lock>time{font:300 84px/1 var(--ip-font)!important;letter-spacing:-.03em!important;margin-top:4px!important;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+html body #pn-game .pav-source-phone .pav-phone-lock>p{font:600 16px/1.2 var(--ip-font)!important;color:rgba(255,255,255,.85)!important}
+html body #pn-game .pav-source-phone .pav-phone-lock-notices button{border-radius:22px!important;padding:13px 14px!important;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.12))!important;border:1px solid rgba(255,255,255,.2)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 20px rgba(0,0,0,.2)!important;color:#fff!important;font:500 13px/1.3 var(--ip-font)!important;-webkit-backdrop-filter:blur(20px) saturate(160%)!important;backdrop-filter:blur(20px) saturate(160%)!important}
+html body #pn-game .pav-source-phone .pav-phone-unlock{border-radius:999px!important;padding:12px 22px!important;background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.12))!important;border:1px solid rgba(255,255,255,.28)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)!important;color:#fff!important;font:600 14px var(--ip-font)!important;-webkit-backdrop-filter:blur(18px)!important;backdrop-filter:blur(18px)!important}
+/* home: squircle icons, legible labels, glass widget and dock */
+html body #pn-game .pav-source-phone .pav-phone-source-apps{gap:18px 14px!important;padding:6px 18px!important}
+html body #pn-game .pav-source-phone .pav-phone-source-apps button{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;color:#fff!important;font:500 11px/1.2 var(--ip-font)!important;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+html body #pn-game .pav-source-phone .pav-phone-source-apps button img,html body #pn-game .pav-source-phone .pav-phone-dock button img{border-radius:23%!important;box-shadow:0 4px 12px rgba(0,0,0,.35),inset 0 0 0 .5px rgba(255,255,255,.2)!important;transition:transform .15s ease}
+html body #pn-game .pav-source-phone .pav-phone-source-apps button:active img,html body #pn-game .pav-source-phone .pav-phone-dock button:active img{transform:scale(.9)}
+html body #pn-game .pav-source-phone .pav-phone-widget{border-radius:24px!important;background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.1))!important;border:1px solid rgba(255,255,255,.22)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 26px rgba(0,0,0,.25)!important;-webkit-backdrop-filter:blur(22px) saturate(170%)!important;backdrop-filter:blur(22px) saturate(170%)!important;color:#fff!important}
+html body #pn-game .pav-source-phone .pav-phone-widget *{color:inherit}
+html body #pn-game .pav-source-phone .pav-phone-dock{margin:0 10px 22px!important;padding:12px 14px!important;border-radius:32px!important;background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.12))!important;border:1px solid rgba(255,255,255,.24)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 30px rgba(0,0,0,.3)!important;-webkit-backdrop-filter:blur(24px) saturate(180%)!important;backdrop-filter:blur(24px) saturate(180%)!important}
+html body #pn-game .pav-source-phone .pav-phone-dock button{background:none!important;border:0!important;box-shadow:none!important;padding:0!important}
+html body #pn-game .pav-source-phone .pav-app-badge{min-width:20px!important;height:20px!important;border-radius:10px!important;background:var(--ip-red)!important;color:#fff!important;font:600 12px/20px var(--ip-font)!important;box-shadow:0 0 0 2px rgba(0,0,0,.15)}
+/* apps: large title, back chevron pill, inset grouped rows */
+html body #pn-game .pav-source-phone .pav-phone-app-heading{font:700 30px/1.1 var(--ip-font)!important;letter-spacing:-.02em!important;color:#fff!important;margin:4px 0 10px!important}
+html body #pn-game .pav-source-phone .pav-phone-back{border-radius:999px!important;padding:6px 12px 6px 10px!important;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.08))!important;border:1px solid rgba(255,255,255,.18)!important;color:#fff!important;font:600 13px var(--ip-font)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)!important}
+html body #pn-game .pav-source-phone :is(.pav-phone-row,.pav-phone-setting,.pav-phone-bank-card,.pav-phone-id-card,.pav-phone-map-card,.pav-phone-health){border-radius:16px!important;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.06))!important;border:1px solid rgba(255,255,255,.1)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)!important}
+html body #pn-game .pav-source-phone :is(.pav-phone-primary,.pav-phone-secondary,.pav-phone-confirm){border-radius:14px!important;font:600 15px var(--ip-font)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)!important}
+html body #pn-game .pav-source-phone .pav-phone-primary{background:linear-gradient(180deg,#3a9bff,#0a6cff)!important;border:0!important;color:#fff!important}
+html body #pn-game .pav-source-phone .pav-phone-secondary{background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.08))!important;border:1px solid rgba(255,255,255,.16)!important;color:#fff!important}
+html body #pn-game .pav-source-phone :is(input,textarea,select){border-radius:12px!important;background:rgba(118,118,128,.24)!important;border:0!important;color:#fff!important;font:400 15px var(--ip-font)!important}
+html body #pn-game .pav-source-phone .pav-phone-search{border-radius:12px!important;background:rgba(118,118,128,.24)!important;border:0!important}
+/* Messages: iMessage bubbles */
+html body #pn-game .pav-source-phone .pav-phone-bubbles>article{max-width:78%;border-radius:20px!important;padding:9px 13px!important;font:400 14px/1.35 var(--ip-font)!important;border:0!important;box-shadow:none!important}
+html body #pn-game .pav-source-phone .pav-phone-bubbles>.sent{margin-left:auto;background:linear-gradient(180deg,#3a9bff,#0a7aff)!important;color:#fff!important;border-bottom-right-radius:6px!important}
+html body #pn-game .pav-source-phone .pav-phone-bubbles>.received{background:rgba(118,118,128,.32)!important;color:#fff!important;border-bottom-left-radius:6px!important}
+html body #pn-game .pav-source-phone .pav-phone-compose{border-radius:22px!important;background:rgba(118,118,128,.24)!important;border:1px solid rgba(255,255,255,.08)!important}
+/* calls: FaceTime-style, big avatar, round glass controls */
+html body #pn-game .pav-source-phone .pav-phone-call .pav-phone-avatar{width:118px!important;height:118px!important;border-radius:50%!important;font:600 46px/118px var(--ip-font)!important;background:linear-gradient(180deg,#a5a9b4,#6e727c)!important;color:#fff!important;box-shadow:0 12px 36px rgba(0,0,0,.35)!important}
+html body #pn-game .pav-source-phone .pav-phone-call h2{font:500 30px/1.15 var(--ip-font)!important;letter-spacing:-.01em}
+html body #pn-game .pav-source-phone .pav-phone-call small{font:400 16px var(--ip-font)!important;color:var(--ip-sub)!important}
+html body #pn-game .pav-source-phone .pav-phone-call-controls button{width:74px!important;height:74px!important;border-radius:50%!important;padding:0!important;display:inline-grid!important;place-items:center;font:500 11px var(--ip-font)!important;border:0!important;color:#fff!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 10px 24px rgba(0,0,0,.3)!important}
+html body #pn-game .pav-source-phone .pav-phone-call-controls .accept{background:linear-gradient(180deg,#4cd964,#26b34a)!important}
+html body #pn-game .pav-source-phone .pav-phone-call-controls .hangup{background:linear-gradient(180deg,#ff5a52,#e0342b)!important}
+html body #pn-game .pav-source-phone .pav-phone-talk{border-radius:999px!important;background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.1))!important;border:1px solid rgba(255,255,255,.2)!important;color:#fff!important;font:600 14px var(--ip-font)!important}
+/* keypad: round glass keys */
+html body #pn-game .pav-source-phone .pav-phone-keypad button{width:72px!important;height:72px!important;border-radius:50%!important;background:rgba(255,255,255,.16)!important;border:0!important;color:#fff!important;font:400 30px var(--ip-font)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18)!important}
+/* exchange: Stocks look (white symbols, green/red change pills) */
+html body #pn-game .pav-source-phone .pav-phone-exchange article{border-radius:16px!important;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.04))!important;border:1px solid rgba(255,255,255,.08)!important}
+html body #pn-game .pav-source-phone .pav-phone-exchange :is(strong,b){color:#fff!important}
+html body #pn-game .pav-source-phone .pav-phone-exchange [data-up=true],html body #pn-game .pav-source-phone .pav-phone-exchange .up{background:var(--ip-green)!important;color:#fff!important;border-radius:8px;padding:2px 8px}
+html body #pn-game .pav-source-phone .pav-phone-exchange [data-up=false],html body #pn-game .pav-source-phone .pav-phone-exchange .down{background:var(--ip-red)!important;color:#fff!important;border-radius:8px;padding:2px 8px}
+html body #pn-game .pav-source-phone .pav-phone-home-indicator{width:134px!important;height:5px!important;bottom:9px!important;border-radius:3px!important;background:rgba(255,255,255,.92)!important}
+/* notification peek: when the phone is closed the device edge slides in from the right with a banner */
+html body #pn-game .pk120{position:fixed;right:-40px;bottom:120px;z-index:46;display:flex;align-items:center;gap:10px;width:330px;padding:14px 56px 14px 14px;border-radius:26px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.1)),rgba(20,20,26,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 18px 44px rgba(0,0,0,.45);color:#fff;font:500 13px/1.3 -apple-system,'Segoe UI',PAVSource,sans-serif;transform:translateX(110%);transition:transform .45s cubic-bezier(.2,.9,.25,1);pointer-events:none}
+html body #pn-game .pk120.in{transform:translateX(0)}
+html body #pn-game .pk120::after{content:'';position:absolute;right:12px;top:-60px;bottom:-60px;width:24px;border-radius:14px 0 0 14px;background:linear-gradient(90deg,#d9d4cc,#8f8a84 40%,#e6e0d7);box-shadow:-2px 0 8px rgba(0,0,0,.35)}
+html body #pn-game .pk120 .pk120-i{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:10px;background:linear-gradient(180deg,#4cd964,#26b34a)}
+html body #pn-game .pk120 .pk120-i.call{background:linear-gradient(180deg,#4cd964,#26b34a)}
+html body #pn-game .pk120 .pk120-i.sms{background:linear-gradient(180deg,#5ac8fa,#0a84ff)}
+html body #pn-game .pk120 .pk120-i .pav105-i{width:20px;height:20px;color:#fff}
+html body #pn-game .pk120 b{display:block;font-weight:600}
+html body #pn-game .pk120 small{display:block;color:rgba(235,235,245,.75);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:220px}
+@media (prefers-reduced-motion:reduce){html body #pn-game .pav-source-phone .pav-phone-device{animation:none!important}html body #pn-game .pk120{transition:none}}
+html body #pn-game .pav-source-phone .pav-phone-bubbles>article time{display:block;margin-top:2px;font-size:10px;opacity:.65;text-align:right}

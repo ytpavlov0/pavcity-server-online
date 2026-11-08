@@ -1,0 +1,18 @@
+/* PAVCITY 141: entry help button and guide. */
+#yt-auth-modal .pav-entry-header .h141-open{display:inline-flex;align-items:center;gap:8px;margin-left:12px;padding:8px 14px 8px 8px;border-radius:999px;border:1px solid rgba(255,95,168,.45);background:linear-gradient(180deg,rgba(28,18,43,.85),rgba(14,9,22,.85));color:#fff;font:800 12.5px/1 PAVSource,'Segoe UI',sans-serif;letter-spacing:.04em;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35),0 0 14px rgba(255,95,168,.18);pointer-events:auto}
+#yt-auth-modal .pav-entry-header .h141-open i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;font-style:normal;background:linear-gradient(140deg,#ff5fa8,#a97bff)}
+#yt-auth-modal .pav-entry-header .h141-open:hover{border-color:rgba(255,95,168,.8)}
+#pav-entry-help141{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:16px;background:rgba(8,5,14,.72);backdrop-filter:blur(6px)}
+#pav-entry-help141 .h141-card{width:min(640px,100%);max-height:min(86vh,760px);display:flex;flex-direction:column;border-radius:20px;background:linear-gradient(170deg,rgba(36,22,54,.98),rgba(16,10,26,.98));border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.6);color:#f6f1ff;font-family:'Segoe UI',system-ui,sans-serif;overflow:hidden}
+#pav-entry-help141 header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 22px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+#pav-entry-help141 header small{color:#ff5fa8;font-weight:800;letter-spacing:.14em;font-size:11px}
+#pav-entry-help141 h2{margin:4px 0 0;font-size:22px;font-weight:800}
+#pav-entry-help141 .h141-close{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font-size:20px;cursor:pointer}
+#pav-entry-help141 .h141-body{overflow:auto;padding:8px 22px 4px}
+#pav-entry-help141 article{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+#pav-entry-help141 article:last-child{border-bottom:0}
+#pav-entry-help141 h3{margin:0 0 6px;font-size:14.5px;color:#ffb36b;font-weight:800}
+#pav-entry-help141 ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.5;color:rgba(246,241,255,.88)}
+#pav-entry-help141 li{margin:2px 0}
+#pav-entry-help141 footer{padding:12px 22px 18px;display:flex;justify-content:flex-end}
+#pav-entry-help141 .h141-ok{padding:10px 22px;border-radius:12px;border:0;background:linear-gradient(140deg,#ff5fa8,#a97bff);color:#fff;font-weight:800;cursor:pointer}

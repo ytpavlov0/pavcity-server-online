@@ -1,0 +1,30 @@
+{
+  "protocol": 45,
+  "package": "mobile-interiors196",
+  "packages": {
+    "apartment": {
+      "scene_sha256": "3aeacad54e59d8f44fcf6cb0357f42bfe1dcf350f2edaca2b7eda41db246ebfb",
+      "ground_sha256": "b4c080fac738a6bbccc6251cfcc848635bc98b4004c2260c6b3ea95383ea5cd7",
+      "floor_z": -100.19627380371094,
+      "target": [
+        346.52,
+        -1012.99,
+        -99.2
+      ],
+      "source_scene": "backups\\mobile-interiors196\\public\\apartment\\scene.json",
+      "source_ground": "backups\\mobile-interiors196\\public\\apartment\\ground.bin"
+    },
+    "garage": {
+      "scene_sha256": "d8d8b5e395df0605e2d3fd939be78a03ecf1b5f2866b228e243a1de4bf3aadac",
+      "ground_sha256": "1d8e90bdf53b1a783282e2e8594194d33fdcdd0b5f145732a27396241456ff91",
+      "floor_z": -100.0,
+      "target": [
+        228.7,
+        -992.0,
+        -99.0
+      ],
+      "source_scene": "backups\\mobile-interiors196\\public\\garage\\scene.json",
+      "source_ground": "backups\\mobile-interiors196\\public\\garage\\ground.bin"
+    }
+  }
+}

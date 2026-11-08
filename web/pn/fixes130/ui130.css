@@ -1,0 +1,37 @@
+/* PAVCITY 130: character history panel, rental chip/panel/countdown */
+html body #pn-game .c130{display:flex;flex-direction:column;gap:14px;max-height:min(70vh,680px);overflow:auto;padding-right:4px;scrollbar-width:thin}
+html body #pn-game .c130-head{display:flex;align-items:center;gap:14px}
+html body #pn-game .c130-av{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--v6-pink,#ff5fa8),var(--v6-violet,#a97bff));color:#fff;font:800 22px/1 PAVSource,'Segoe UI',sans-serif}
+html body #pn-game .c130-head h3{margin:0;font:800 19px/1.2 PAVSource,'Segoe UI',sans-serif;color:#fff}
+html body #pn-game .c130-head small{color:rgba(246,241,255,.6);font-size:11.5px}
+html body #pn-game .c130-jail{margin-left:auto;padding:6px 10px;border-radius:10px;background:rgba(255,77,106,.16);border:1px solid rgba(255,77,106,.45);color:#ff8fa3;font:800 10.5px/1 'Segoe UI',sans-serif;letter-spacing:.08em}
+html body #pn-game .c130-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+html body #pn-game .c130-tiles article{padding:10px 12px;border-radius:13px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08)}
+html body #pn-game .c130-tiles small{display:block;font-size:10.5px;color:rgba(246,241,255,.55);letter-spacing:.04em}
+html body #pn-game .c130-tiles strong{display:block;margin-top:3px;font:800 15px/1.2 PAVSource,'Segoe UI',sans-serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html body #pn-game .c130-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+html body #pn-game .c130-sec{padding:12px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);min-width:0}
+html body #pn-game .c130-sec h4{margin:0 0 8px;font:800 11px/1 'Segoe UI',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--v6-pink,#ff5fa8)}
+html body #pn-game .c130-sec ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+html body #pn-game .c130-sec li{display:flex;flex-direction:column;gap:1px;padding:7px 9px;border-radius:10px;background:rgba(0,0,0,.18)}
+html body #pn-game .c130-sec li b{font:700 12.5px/1.25 'Segoe UI',sans-serif;color:#fff}
+html body #pn-game .c130-sec li span{font-size:11px;color:rgba(246,241,255,.6)}
+html body #pn-game .c130-sec li.death b{color:#ff8fa3}html body #pn-game .c130-sec li.kill b{color:#ffcf7a}
+html body #pn-game .c130-empty{margin:0;font-size:11.5px;color:rgba(246,241,255,.5)}
+html body #pn-game .c130-open{display:block;width:100%;margin:0 0 8px}
+@media (max-width:820px){html body #pn-game .c130-grid,html body #pn-game .c130-tiles{grid-template-columns:1fr 1fr}}
+html body #pn-game .r130-chip{position:fixed;left:50%;bottom:118px;transform:translateX(-50%);z-index:44;display:flex;align-items:center;gap:10px;padding:10px 16px!important;border-radius:16px!important;background:linear-gradient(180deg,rgba(28,18,43,.92),rgba(14,9,22,.92))!important;border:1px solid rgba(255,95,168,.45)!important;color:#fff!important;font:800 13px/1 PAVSource,'Segoe UI',sans-serif!important;box-shadow:0 10px 26px rgba(0,0,0,.4),0 0 18px rgba(255,95,168,.2)!important;pointer-events:auto;cursor:pointer}
+html body #pn-game .r130-chip[hidden]{display:none}
+html body #pn-game .r130-chip kbd{font:800 10px/1 'Segoe UI',sans-serif;padding:4px 7px;border-radius:7px;background:#f6f1ff;color:#160c22}
+html body #pn-game .r130-timer{position:fixed;right:clamp(14px,1.6vw,28px);top:190px;z-index:34;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;padding:10px 12px;border-radius:14px;background:linear-gradient(180deg,rgba(28,18,43,.9),rgba(14,9,22,.9));border:1px solid rgba(255,255,255,.12);color:#fff;pointer-events:auto;min-width:200px}
+html body #pn-game .r130-timer[hidden]{display:none}
+html body #pn-game .r130-timer small{grid-column:1/-1;font:800 9.5px/1 'Segoe UI',sans-serif;letter-spacing:.2em;color:var(--v6-pink,#ff5fa8)}
+html body #pn-game .r130-timer b{font:800 13px/1.2 PAVSource,'Segoe UI',sans-serif}
+html body #pn-game .r130-timer span{grid-column:1;font:700 12px/1.2 'Segoe UI',sans-serif;color:rgba(246,241,255,.75);font-variant-numeric:tabular-nums}
+html body #pn-game .r130-timer button{grid-column:2;grid-row:2/4;padding:7px 10px!important;border-radius:10px!important;font:700 11px/1 'Segoe UI',sans-serif!important}
+html body #pn-game .r130-timer.late span{color:#ffb36b}
+html body #pn-game .r130 p{margin:0 0 12px;color:rgba(246,241,255,.7);font-size:12.5px}
+html body #pn-game .r130-list{display:flex;flex-direction:column;gap:8px}
+html body #pn-game .r130-list article{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:10px 12px;border-radius:13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+html body #pn-game .r130-list b{display:block;color:#fff;font:800 13.5px/1.2 PAVSource,'Segoe UI',sans-serif}
+html body #pn-game .r130-list small{color:rgba(246,241,255,.6);font-size:11px}

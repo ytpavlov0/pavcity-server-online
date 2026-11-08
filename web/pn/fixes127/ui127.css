@@ -1,0 +1,15 @@
+/* PAVCITY 127: floating entry icons over the ground rings. */
+html body #pn-game .e127-layer{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+html body #pn-game .e127{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:7px;transform-origin:50% 100%;will-change:transform,opacity;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+html body #pn-game .e127[hidden]{display:none}
+html body #pn-game .e127-ic{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;color:#fff;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.28),transparent 58%),linear-gradient(160deg,rgba(255,95,168,.92),rgba(169,123,255,.92));box-shadow:0 0 0 2px rgba(255,255,255,.85),0 0 0 6px rgba(255,95,168,.22),0 0 22px rgba(255,95,168,.45);animation:e127bob 2.4s ease-in-out infinite}
+html body #pn-game .e127-ic svg{width:20px;height:20px}
+html body #pn-game .e127[data-kind="7"] .e127-ic{background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.28),transparent 58%),linear-gradient(160deg,rgba(90,169,255,.95),rgba(110,90,255,.92));box-shadow:0 0 0 2px rgba(255,255,255,.85),0 0 0 6px rgba(90,169,255,.22),0 0 22px rgba(90,169,255,.45)}
+html body #pn-game .e127[data-kind="4"] .e127-ic{background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.28),transparent 58%),linear-gradient(160deg,rgba(255,179,107,.95),rgba(255,95,168,.9))}
+html body #pn-game .e127-tag{display:flex;flex-direction:column;align-items:center;gap:1px;max-width:220px;padding:6px 12px 7px;border-radius:12px;background:linear-gradient(180deg,rgba(28,18,43,.92),rgba(14,9,22,.92));border:1px solid rgba(255,255,255,.12);opacity:0;transform:translateY(-4px) scale(.96);transition:opacity .18s ease,transform .18s ease;order:-1}
+html body #pn-game .e127.close .e127-tag{opacity:1;transform:none}
+html body #pn-game .e127-tag b{font:800 12.5px/1.2 PAVSource,'Segoe UI',sans-serif;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:196px;letter-spacing:.02em}
+html body #pn-game .e127-tag small{font:700 10px/1.2 'Segoe UI',sans-serif;color:var(--v6-peach,#ffb36b);letter-spacing:.08em;white-space:nowrap}
+html body #pn-game.pav-ui-busy .e127-layer,html body #pn-game .pn-menu:not([hidden])~.e127-layer{display:none}
+@keyframes e127bob{50%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){html body #pn-game .e127-ic{animation:none}}

@@ -1,0 +1,6 @@
+/* 116: idle fade (log only; the input is never faded) and a calm scrollbar. */
+.chat .chat__messages{transition:opacity .6s ease}
+.chat.idle116 .chat__messages{opacity:.38}
+.chat__messages::-webkit-scrollbar{width:6px}
+.chat__messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:6px}
+.chat__messages::-webkit-scrollbar-track{background:transparent}

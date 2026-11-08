@@ -1,0 +1,20 @@
+#pn-game .s91-panel .rp-window{width:min(1040px,calc(100vw - 32px));max-height:88vh;overflow:auto;background:radial-gradient(ellipse at 100% 0,#563c6326,transparent 60%),#15131e;border:1px solid #b09cbd30;border-radius:20px}
+#pn-game .s91-panel .rp-content{padding:20px}
+#pn-game .s91-hero{border-radius:14px;padding:24px;background:linear-gradient(120deg,#322938,#1c2131);border:1px solid #ffffff0e}
+#pn-game .s91-hero small{color:#ffacd3;font-size:10px;letter-spacing:2px}
+#pn-game .s91-hero h2{font-size:clamp(22px,3vw,32px);margin:12px 0;letter-spacing:-1px}
+#pn-game .s91-hero p{max-width:680px;color:#b9b4c6;line-height:1.7;font-size:13px}
+#pn-game .s91-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0;color:#aaa4b9;font-size:12px}
+#pn-game .s91-offers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#pn-game .s91-offers article{min-width:0;background:linear-gradient(140deg,#27232f,#1a1923);border:1px solid #c4b0cf24;border-radius:14px;padding:20px;overflow-wrap:anywhere}
+#pn-game .s91-offers header{display:flex;justify-content:space-between;gap:10px;font-size:10px;color:#b6a5c1;flex-wrap:wrap;letter-spacing:.5px}
+#pn-game .s91-offers header b{color:#b1e5d6}#pn-game .s91-offers h3{font-size:24px;margin:20px 0 10px}
+#pn-game .s91-plate{display:inline-block;padding:7px 14px;border:1px solid #b6b0c54d;border-radius:6px;background:#dedee9;color:#262330;font-weight:800;letter-spacing:3px}
+#pn-game .s91-offers dl{margin:20px 0}#pn-game .s91-offers dl div{display:flex;justify-content:space-between;gap:16px;margin:8px 0;font-size:12px}#pn-game .s91-offers dt{color:#a9a4b6}#pn-game .s91-offers dd{margin:0;text-align:right}
+#pn-game .s91-price{font-size:26px;font-variant-numeric:tabular-nums;color:#b5f3da}#pn-game .s91-time,#pn-game .s91-confirm{font-size:12px;line-height:1.6;color:#d3b6d8}
+#pn-game .s91-buttons{display:flex;gap:10px;flex-wrap:wrap}#pn-game .s91-panel button{min-height:40px;border-radius:9px;padding:10px 15px;max-width:100%;white-space:normal}#pn-game .s91-buttons button:first-child{background:linear-gradient(110deg,#ffbd9a,#e9a2cb);color:#29202d;border:0;font-weight:700}#pn-game .s91-error{color:#ff9baf;font-size:12px}#pn-game .s91-panel button:disabled{opacity:.45}
+@media(max-width:640px){#pn-game .s91-offers{grid-template-columns:minmax(0,1fr)}#pn-game .s91-panel .rp-content{padding:12px}#pn-game .s91-hero{padding:16px}}
+
+#pn-game .s91-panel .rp-window{padding:0!important}
+#pn-game .s91-panel .rp-window>header{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0;padding:18px 22px;background:#1b1825!important}
+#pn-game .s91-panel .rp-window>header h2{font-size:19px;margin:0}#pn-game .s91-panel .rp-close{flex:0 0 40px;min-height:40px}

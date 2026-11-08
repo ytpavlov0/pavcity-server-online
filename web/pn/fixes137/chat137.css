@@ -1,0 +1,7 @@
+/* 137: the input sat below the iframe's visible area (top 185+37 px, ~40 px tall, frame 240 px), so focusing it
+   scrolled the whole chat up 31 px and cut the top lines until it closed. The input is now anchored to the frame
+   bottom inside a reserved strip and the log height never changes, so opening, typing and closing move nothing. */
+.chat{overflow:hidden!important}
+.chat__messages{height:calc(100% - 54px)!important}
+.chat__input-block{top:auto!important;bottom:6px!important;margin-top:0!important}
+.autocomplete-items{top:auto!important;bottom:100%!important;margin:0 0 4px!important;display:flex;flex-direction:column-reverse}

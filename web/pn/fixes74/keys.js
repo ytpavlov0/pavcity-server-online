@@ -1,0 +1,18 @@
+/* Existing locksmith marker; the same property/vehicle permissions on both clients. */
+(()=>{'use strict';const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+addEventListener('pav-game-created',({detail:g})=>queueMicrotask(()=>queueMicrotask(()=>{
+ let epoch=0,loading=false;const pending=new Map();
+ const open=g.openRP.bind(g),close=g.closeRP.bind(g);g.openRP=(...args)=>{epoch++;return open(...args);};g.closeRP=(...args)=>{epoch++;return close(...args);};
+ const mutate=async(verb,data)=>{const key=JSON.stringify([verb,data]),id=pending.get(key)||crypto.randomUUID();pending.set(key,id);const r=await g.api('/api/key74/'+verb,{...data,request_id:id});pending.delete(key);return r;};
+ g.keyShop=async()=>{if(loading)return;loading=true;const turn=++epoch;let r;try{r=await g.api('/api/key74/list');}finally{loading=false;}if(turn!==epoch||!g.hud.isConnected)return;
+  const p=g.openRP('Anahtarcı · Araç ve mülk', '<p>Kopya $2.500. Alıcı yanına yaya gelmeli. Mevcut bir anahtara tekrar ücret kesilmez. İptal için kişinin çevrim içi olması gerekmez.</p><button data-key-gps>Anahtarcıya GPS</button>'+(!r.at_shop?'<p>Kopyalamak için haritadaki anahtarcıya git. Anahtar iptali buradan yapılabilir.</p>':'')+'<div class="rp-job-cards">'+r.assets.map((a,i)=>'<article data-key-asset="'+i+'"><small>'+(a.kind==='property'?'MÜLK':'ARAÇ')+' #'+a.id+'</small><h3>'+esc(a.name)+'</h3><label>Yakındaki alıcı<select data-key-target>'+r.players.map(q=>'<option value="'+q.char_id+'">'+esc(q.name)+' · ID '+q.id+'</option>').join('')+'</select></label><button data-key-copy '+(!r.at_shop||!r.players.length?'disabled':'')+'>Kopyala · $2.500</button><p>Verilen anahtarlar</p>'+a.holders.map(q=>'<div><span>'+esc(q.name)+' · Kayıt #'+q.char_id+'</span> <button data-key-revoke="'+q.char_id+'">İptal et</button></div>').join('')+(!a.holders.length?'<p>Verilmiş anahtar yok.</p>':'')+'</article>').join('')+'</div>'+(!r.assets.length?'<p>Kayıtlı aracın veya mülkün yok.</p>':''),'p74-keyshop');
+  p.querySelector('[data-key-gps]').onclick=()=>{g.setWaypoint(r.locksmith.x,r.locksmith.y);g.notice('Anahtarcı GPS’e işlendi.');g.closeRP();};
+  let busy=false;
+  p.querySelectorAll('[data-key-asset]').forEach(card=>{const a=r.assets[Number(card.dataset.keyAsset)];const send=async(b,verb,q)=>{if(busy)return;if(!b.dataset.confirm){b.dataset.confirm='yes';b.textContent=verb==='copy'?'Onayla · $2.500':'İptali onayla';return;}busy=true;const data={kind:a.kind,id:a.id,char_id:q.char_id,...(verb==='copy'?{server_id:q.id}:{})},buttons=[...p.querySelectorAll('button')].map(x=>[x,x.disabled]);buttons.forEach(([x])=>x.disabled=true);try{const done=await mutate(verb,data);g.notice(done.notice);if(p.isConnected)await g.keyShop();}catch(e){if(p.isConnected){p.querySelector('.rp-error').textContent=e.message;buttons.forEach(([x,disabled])=>x.disabled=disabled);}}finally{busy=false;}};
+   const copy=card.querySelector('[data-key-copy]');copy.onclick=()=>{const q=r.players.find(q=>q.char_id===Number(card.querySelector('select').value));if(q)send(copy,'copy',q);};card.querySelector('select').onchange=()=>{delete copy.dataset.confirm;copy.textContent='Kopyala · $2.500';};
+   card.querySelectorAll('[data-key-revoke]').forEach(b=>b.onclick=()=>send(b,'revoke',{char_id:Number(b.dataset.keyRevoke)}));
+  });
+ };
+ const run=g.runCommand?.bind(g);if(run)g.runCommand=async(message,...rest)=>{if(['/anahtarlar','/anahtarci'].includes(message.trim().toLowerCase()))return g.keyShop();return run(message,...rest);};
+ addEventListener('pav-game-stop',()=>{epoch++;pending.clear();},{once:true});
+})));})();

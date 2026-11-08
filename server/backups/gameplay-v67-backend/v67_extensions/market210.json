@@ -1,0 +1,20 @@
+{
+  "package": "mobile-market210",
+  "kind": "market",
+  "target": {
+    "x": 376.5,
+    "y": 329.5,
+    "z": 103.5818038525,
+    "heading": 0,
+    "ipl": ""
+  },
+  "floor_z": 102.5818038525,
+  "scene_sha256": "d58936136c7c959e6e4dde6cdc9f430eba9d5fe043c1ffe8355315bc940f2425",
+  "ground_sha256": "7abc824ff88aed8e22d779edba82a4c747f8ef8f0f03f8f67a0a3491d1fe25f2",
+  "source": "hw1_02_interior_v_shop_247_milo_.ymap",
+  "models": 82,
+  "placements": 104,
+  "transfer_bytes": 12352788,
+  "asset_budget_bytes": 89733782,
+  "device_acceptance": false
+}

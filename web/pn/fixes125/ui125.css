@@ -1,0 +1,50 @@
+/* PAVCITY 125: proportional entry / character select and the ALT-eye.
+   Entry: the columns scale with the window (the art column was a fixed 735 px track and the panel
+   scrolled its own buttons out of view on short screens), sizes follow the viewport height, the
+   delete button sits inside its card, logout is a full-width text button, the art credit no longer
+   collides with the loading bar and the engine status line stays off the entry footer.
+   ALT-eye: a 24 px icon sat in a 25 px circle with 5 px padding and spilled out of it. */
+html body #yt-auth-modal.pav-entry .pav-entry-content{grid-template-columns:minmax(300px,min(430px,34vw)) minmax(0,1fr)!important;gap:clamp(18px,3.4vw,64px)!important;margin-inline:clamp(52px,6vw,112px) clamp(16px,4vw,84px)!important;padding-top:clamp(10px,2.4vh,28px)!important;padding-bottom:clamp(10px,2.6vh,30px)!important;min-width:0!important;box-sizing:border-box}
+html body #yt-auth-modal.pav-entry .pav-entry-content>*{min-width:0!important;max-width:100%!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-entry-panel{padding:clamp(14px,2.6vh,26px) clamp(16px,1.8vw,26px)!important;display:flex!important;flex-direction:column!important;gap:clamp(6px,1.1vh,12px)!important;box-sizing:border-box}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-entry-panel>*{margin-top:0!important;margin-bottom:0!important;flex:0 0 auto}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-entry-panel h1{font-size:clamp(28px,5.4vh,52px)!important;line-height:1.05!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-character-list{display:flex!important;flex-direction:column!important;gap:clamp(6px,1.1vh,10px)!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-character-row{margin:0!important;position:relative!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-character{width:100%!important;min-height:clamp(54px,8.6vh,78px)!important;padding:clamp(8px,1.5vh,15px) 40px clamp(8px,1.5vh,15px) 14px!important;box-sizing:border-box!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-character b{margin-left:auto!important;white-space:nowrap}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-remove-character{position:absolute!important;right:9px!important;top:50%!important;left:auto!important;transform:translateY(-50%)!important;width:24px!important;height:24px!important;border-radius:50%!important;display:grid!important;place-items:center!important;padding:0!important;margin:0!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.14)!important;color:rgba(246,241,255,.7)!important;font-size:12px!important;line-height:1!important;z-index:2}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-remove-character:hover{background:rgba(255,93,108,.18)!important;border-color:rgba(255,93,108,.55)!important;color:#fff!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-character b{margin-right:14px!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 #enter-character{width:100%!important;padding-block:clamp(10px,1.9vh,16px)!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-lobby-actions{display:flex!important;gap:8px!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-lobby-actions button{flex:1 1 0!important;min-width:0!important;padding-block:clamp(8px,1.4vh,12px)!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 #logout{display:block!important;width:100%!important;height:auto!important;min-height:0!important;padding:clamp(6px,1vh,10px) 0!important;background:transparent!important;border:0!important;box-shadow:none!important;color:rgba(246,241,255,.62)!important;font:600 12.5px/1.2 'Segoe UI',sans-serif!important;text-align:center!important;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.22)}
+html body #yt-auth-modal.pav-entry.pav-character-select23 #logout:hover{color:#fff!important}
+html body #yt-auth-modal.pav-entry.pav-character-select23 #logout::before,html body #yt-auth-modal.pav-entry.pav-character-select23 #logout::after{display:none!important}
+html body #yt-auth-modal.pav-entry .pav-entry-art{min-width:0!important;max-width:100%!important}
+html body #yt-auth-modal.pav-entry .pav-entry-art .pav-preview-status{max-width:min(380px,calc(100% - 32px))!important;left:50%!important;transform:translateX(-50%)!important;box-sizing:border-box}
+html body #yt-auth-modal.pav-entry .pav-entry-art:has(.pav-preview-status:not([hidden])) .p82-art-credit{display:none!important}
+html body #yt-auth-modal.pav-entry .pav-preview-tools{flex-wrap:nowrap!important;justify-content:center!important;max-width:calc(100% - 24px)!important;gap:clamp(4px,.5vw,8px)!important}
+html body #yt-auth-modal.pav-entry .pav-preview-tools button{flex:0 1 auto!important;min-width:0!important;padding:clamp(7px,1.1vh,10px) clamp(8px,.9vw,14px)!important;font-size:clamp(12px,1vw,15px)!important;white-space:nowrap}
+html body #yt-auth-modal.pav-entry .pav-entry-header{min-width:0!important;box-sizing:border-box}
+html body #yt-auth-modal.pav-entry .pav-entry-header>*{min-width:0}
+body:has(#yt-auth-modal.pav-entry)>#hud{visibility:hidden!important}
+/* login / register: same proportional panel; the reveal button sits inside the password field */
+html body #yt-auth-modal.pav-entry:not(.pav-character-select23):not(.creator-view) .pav-entry-panel{padding:clamp(14px,2.8vh,30px) clamp(16px,1.8vw,30px)!important;box-sizing:border-box}
+html body #yt-auth-modal.pav-entry:not(.pav-character-select23):not(.creator-view) .pav-entry-panel h1{font-size:clamp(28px,5.6vh,56px)!important;line-height:1.04!important;margin:clamp(6px,1.4vh,16px) 0 clamp(4px,1vh,10px)!important}
+html body #yt-auth-modal.pav-entry:not(.pav-character-select23):not(.creator-view) .pav-entry-panel .pav-subtitle{margin-bottom:clamp(8px,1.8vh,22px)!important}
+html body #yt-auth-modal.pav-entry #account label{margin-bottom:clamp(8px,1.6vh,16px)!important}
+html body #yt-auth-modal.pav-entry #account input{padding-block:clamp(10px,1.8vh,16px)!important;box-sizing:border-box}
+html body #yt-auth-modal.pav-entry #account .pav-password{position:relative!important;display:block!important}
+html body #yt-auth-modal.pav-entry #account .pav-password input{width:100%!important;padding-right:52px!important}
+html body #yt-auth-modal.pav-entry #account #reveal{position:absolute!important;right:6px!important;top:50%!important;transform:translateY(-50%)!important;width:38px!important;height:38px!important;padding:0!important;margin:0!important;border-radius:10px!important;display:grid!important;place-items:center!important}
+html body #yt-auth-modal.pav-entry #account .pav-primary{width:100%!important;padding-block:clamp(11px,1.9vh,16px)!important}
+html body #yt-auth-modal.pav-entry #toggle{display:block!important;width:100%!important;height:auto!important;padding:clamp(6px,1.2vh,12px) 0!important;background:transparent!important;border:0!important;box-shadow:none!important;color:rgba(246,241,255,.7)!important;font:600 13px/1.2 'Segoe UI',sans-serif!important;text-align:center!important;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.22)}
+html body #yt-auth-modal.pav-entry #toggle::before,html body #yt-auth-modal.pav-entry #toggle::after{display:none!important}
+@media (max-height:700px){html body #yt-auth-modal.pav-entry.pav-character-select23 .pav-entry-panel .pav-subtitle{display:none!important}html body #yt-auth-modal.pav-entry .pav-entry-footer{padding-block:10px!important}}
+/* ALT-eye on player tags: a round glass button with the icon centred inside it. */
+html body #pn-game .pn-tag .pav-head-eye{box-sizing:border-box!important;width:30px!important;height:30px!important;padding:0!important;border-radius:50%!important;place-items:center!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;right:-38px!important;top:50%!important;transform:translateY(-50%)!important;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.18),transparent 60%),rgba(16,10,26,.9)!important;border:1.5px solid color-mix(in srgb,var(--v6-pink,#ff5fa8) 75%,#fff)!important;color:#fff!important;box-shadow:0 0 0 3px rgba(255,95,168,.16),0 6px 16px rgba(0,0,0,.45)!important;line-height:0!important}
+html body #pn-game .pn-tag .pav-head-eye :is(svg,img){display:block!important;width:16px!important;height:16px!important;max-width:16px!important;max-height:16px!important;margin:0!important;flex:0 0 auto}
+html body #pn-game .pn-tag .pav-head-eye:hover{background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.24),transparent 60%),rgba(60,22,52,.94)!important}
+html body #pn-game .pn-money{white-space:nowrap!important;font-variant-numeric:tabular-nums}

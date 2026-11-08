@@ -1,0 +1,13 @@
+/* 110: the money/identity stack scales with the viewport and a stack moved with /edithud
+ * can no longer leave the screen (seen clipped at the right edge on narrower windows). */
+html body #pn-game.pav106.pav106 .pn-top-hud{max-width:min(340px,34vw)!important;padding:clamp(8px,.8vw,12px) clamp(10px,1vw,16px) clamp(8px,.8vw,12px) clamp(20px,2.4vw,40px)!important}
+html body #pn-game.pav106.pav106 .pn-money{font-size:clamp(22px,calc(1.4vw + 10px),38px)!important}
+html body #pn-game.pav106.pav106 .pn-money+*,html body #pn-game.pav106.pav106 .pav106-cash svg{width:clamp(18px,1.4vw,24px)!important;height:clamp(18px,1.4vw,24px)!important}
+html body #pn-game.pav106.pav106 .pav-bank-balance b{font-size:clamp(14px,calc(.8vw + 6px),20px)!important}
+html body #pn-game.pav106.pav106 .pn-player-name{font-size:clamp(11px,calc(.4vw + 6px),13px)!important;max-width:min(220px,22vw)}
+html body #pn-game.pav106.pav106 .pav-city-meta{font-size:clamp(9px,calc(.3vw + 6px),11px)!important}
+html body #pn-game.pav106.pav106 .p82-ammo strong{font-size:clamp(20px,calc(1.3vw + 8px),34px)!important}
+html body #pn-game.pav106.pav106 .p82-ammo .pn-ammo-reserve{font-size:clamp(12px,calc(.6vw + 6px),18px)!important}
+html body #pn-game.pav106.pav106 .pn-live>.p84-status-stack:not(.p84-positioned){top:clamp(10px,1.6vh,22px)!important;right:clamp(10px,1.4vw,26px)!important}
+html body #pn-game.pav106.pav106 .pn-live>.p84-status-stack.p84-positioned{left:clamp(6px,var(--hud-x84),calc(100vw - min(360px,38vw)))!important;top:clamp(6px,var(--hud-y84),calc(100vh - 230px))!important}
+@media (max-height:720px){html body #pn-game.pav106.pav106 .p84-status-stack{gap:4px!important}}

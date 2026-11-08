@@ -1,0 +1,61 @@
+/* Mobile overrides load after gameplay CSS, including the desktop character lobby. */
+html.pav-mobile,html.pav-mobile body{width:100%;height:100%;margin:0;overflow:hidden!important;overscroll-behavior:none;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.pav-mobile #yt-auth-modal,.pav-mobile #pav-boot,.pav-mobile .pav-arrival24{box-sizing:border-box;inset:var(--pav-viewport-top,0px) 0 auto;height:var(--pav-visible-height,100dvh);min-height:0;max-height:none;width:100%;overflow-x:hidden}
+.pav-mobile #yt-auth-modal{background:#101715;isolation:isolate;display:flex;flex-direction:column}
+.pav-mobile #yt-auth-modal *{box-sizing:border-box;min-width:0}
+.pav-mobile #yt-auth-modal .pav-entry-header{flex:none;flex-wrap:nowrap;gap:9px;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left))}
+.pav-mobile #yt-auth-modal .pav-entry-header img{width:32px;height:32px;flex:none;filter:none}
+.pav-mobile #yt-auth-modal .pav-entry-header strong{font-size:22px}
+.pav-mobile #yt-auth-modal .pav-entry-header small{font-size:6px;letter-spacing:2px}
+.pav-mobile #yt-auth-modal .pav-entry-header .pav-music{display:none}
+.pav-mobile #yt-auth-modal .pav-count{margin-left:auto;white-space:nowrap;letter-spacing:0;padding:7px;font-size:8px}
+.pav-mobile #yt-auth-modal .pav-entry-rail,.pav-mobile #yt-auth-modal .pav-entry-footer{display:none}
+.pav-mobile #yt-auth-modal .pav-entry-content{display:grid;grid-template-columns:minmax(0,1fr);width:100%;height:auto;min-height:0;flex:1;gap:0;margin:0;padding:0 max(14px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));overflow:hidden}
+.pav-mobile #yt-auth-modal .pav-entry-panel{align-self:stretch;min-height:0;max-height:100%;height:auto;margin:0;padding:14px 0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch;border:0;background:transparent;animation:none}
+.pav-mobile #yt-auth-modal .pav-entry-art{display:none!important}
+.pav-mobile #yt-auth-modal h1{font-size:30px;line-height:1.1;margin:8px 0 12px}
+.pav-mobile #yt-auth-modal .pav-subtitle{font-size:12px;margin:8px 0 14px}
+.pav-mobile #yt-auth-modal input:not([type=range]),.pav-mobile #yt-auth-modal select,.pav-mobile #yt-auth-modal textarea{font-size:16px!important;line-height:1.3;padding:12px;max-width:100%;scroll-margin-block:12px}
+.pav-mobile #yt-auth-modal label{margin:12px 0}
+.pav-mobile #yt-auth-modal button{touch-action:manipulation;min-height:44px;white-space:normal}
+.pav-mobile #yt-auth-modal .pav-character{min-height:68px;padding:12px 42px 12px 12px;margin:0}
+.pav-mobile #yt-auth-modal .pav-character strong{font-size:15px;overflow-wrap:anywhere}
+.pav-mobile #yt-auth-modal .pav-character b{display:none}
+.pav-mobile #yt-auth-modal .pav-remove-character{width:36px;min-height:36px;right:4px;top:4px}
+.pav-mobile #yt-auth-modal .pav-lobby-actions{flex-wrap:wrap;gap:8px}
+.pav-mobile #yt-auth-modal .pav-backdrop,.pav-mobile #yt-auth-modal.preview-active .pav-backdrop{opacity:1;background:#101715}
+.pav-mobile #yt-auth-modal .pav-backdrop:before,.pav-mobile #yt-auth-modal .pav-backdrop:after,.pav-mobile #yt-auth-modal .pav-embers{display:none}
+.pav-mobile #pav-boot{z-index:10020;justify-content:flex-start;overflow-y:auto;padding-top:max(16px,env(safe-area-inset-top));padding-bottom:max(16px,env(safe-area-inset-bottom));touch-action:pan-y}
+.pav-mobile #pav-boot .pav-boot-logo{margin-top:auto;width:56px;height:56px;min-height:56px}
+.pav-mobile #pav-boot>button:last-child{margin-bottom:auto}
+.pav-mobile #pav-boot h1{font-size:28px;margin:5px}
+.pav-mobile #pav-boot .pav-boot-stage{font-size:13px;line-height:1.5;margin:8px 0 4px}
+.pav-mobile #pav-boot .pav-boot-detail{line-height:1.6;margin:4px 0;font-size:11px}
+.pav-mobile #pav-boot .pav-music{margin:8px 0;flex-wrap:wrap;justify-content:center}
+.pav-mobile #pav-boot .pav-mobile-recovery{max-width:100%;max-height:90px;overflow:auto;font-size:11px}
+.pav-mobile .pav-arrival24{background:#0a1211;overflow:hidden}
+.pav-mobile .pav-arrival24 header{padding:8px max(14px,env(safe-area-inset-right)) 8px max(14px,env(safe-area-inset-left));gap:10px;flex:none}
+.pav-mobile .pav-arrival24 header img{width:32px;height:32px}
+.pav-mobile .pav-arrival24 header strong{font-size:22px}
+.pav-mobile .pav-arrival24 header small{font-size:7px;letter-spacing:2px}
+.pav-mobile .pav-arrival24 main{grid-template-columns:minmax(0,1fr);display:grid;align-items:start;gap:0;min-height:0;padding:14px max(16px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));overflow-y:auto;touch-action:pan-y}
+.pav-mobile .pav-arrival24 aside,.pav-mobile .pav-arrival-region,.pav-mobile .pav-arrival24 footer{display:none}
+.pav-mobile .pav-arrival-copy{width:100%;max-width:680px;justify-self:center;min-width:0}
+.pav-mobile .pav-arrival24 h1{font-size:34px;line-height:1.1;letter-spacing:-1px;margin:12px 0}
+.pav-mobile .pav-arrival24 .pav-arrival-name{font-size:15px!important;margin:12px 0}
+.pav-mobile .pav-arrival-status{margin-top:12px}
+.pav-mobile .pav-arrival24 li{font-size:10px;gap:5px;min-width:0}
+.pav-mobile .pav-arrival24 .pav-arrival-status:before{animation:none}
+@media(orientation:landscape) and (max-height:540px){
+ .pav-mobile #yt-auth-modal .pav-entry-header{padding-block:5px}
+ .pav-mobile #yt-auth-modal .pav-entry-header img{width:26px;height:26px}
+ .pav-mobile #yt-auth-modal .pav-entry-header strong{font-size:19px}
+ .pav-mobile #yt-auth-modal .pav-entry-header small{display:none}
+ .pav-mobile #yt-auth-modal .pav-entry-panel{padding-top:8px}
+ .pav-mobile #yt-auth-modal h1{font-size:26px;margin:5px 0 9px}
+ .pav-mobile #yt-auth-modal .pav-entry-panel{max-width:680px;width:100%;justify-self:center}
+ .pav-mobile #pav-boot .pav-boot-logo,.pav-mobile #pav-boot>small{display:none}
+ .pav-mobile #pav-boot h1{margin-top:auto;font-size:23px}
+ .pav-mobile #pav-boot .pav-boot-track{margin:6px 0}
+ .pav-mobile #pav-boot .pav-music{margin:4px}
+}

@@ -1,0 +1,11 @@
+/* PAVCITY 129: hotwire panel (built on the lockpick card) */
+html body #pn-game .pav-lockpick.hw129 .hw129-target{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px 0 10px;padding:14px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);transition:box-shadow .15s,border-color .15s}
+html body #pn-game .pav-lockpick.hw129 .hw129-target i{width:58px;height:10px;border-radius:6px;background:var(--w,#fff);box-shadow:0 0 14px color-mix(in srgb,var(--w,#fff) 60%,transparent)}
+html body #pn-game .pav-lockpick.hw129 .hw129-target b{font:800 18px/1.1 PAVSource,'Segoe UI',sans-serif;color:#fff;letter-spacing:.02em;min-width:120px}
+html body #pn-game .pav-lockpick.hw129 .hw129-target.ready{border-color:var(--w,#fff);box-shadow:0 0 0 3px color-mix(in srgb,var(--w,#fff) 25%,transparent),0 0 26px color-mix(in srgb,var(--w,#fff) 35%,transparent)}
+html body #pn-game .pav-lockpick.hw129 .hw129-wires{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+html body #pn-game .pav-lockpick.hw129 .hw129-wires button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px!important;border-radius:13px!important;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))!important;border:1px solid rgba(255,255,255,.12)!important;color:#f6f1ff!important;font:700 11.5px/1.1 'Segoe UI',sans-serif!important}
+html body #pn-game .pav-lockpick.hw129 .hw129-wires button span{width:100%;height:8px;border-radius:5px;background:var(--w)}
+html body #pn-game .pav-lockpick.hw129 .hw129-wires button kbd{font:800 10px/1 'Segoe UI',sans-serif;color:rgba(246,241,255,.6);background:none;border:0}
+html body #pn-game .pav-lockpick.hw129 .hw129-wires button:not(:disabled):hover{border-color:var(--w)!important}
+html body #pn-game .pav-lockpick.hw129 .hw129-wires button:disabled{opacity:.55}

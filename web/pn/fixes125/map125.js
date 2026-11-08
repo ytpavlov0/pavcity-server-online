@@ -1,0 +1,44 @@
+/* One bounded shared map cache, immediate overview, native road GPS points. */
+(()=>{'use strict';
+const project=(x,y)=>[(117.3+.02072*x)*16,(172.8-.0205*y)*16];window.PAVMapProject=project;
+const tiles=new Map(),overview=new Image();let ready=false;const listeners=new Set();const wake=()=>listeners.forEach(fn=>fn());
+overview.onload=()=>{ready=true;wake();};overview.src='/pn/assets-v19/map-'+(window.PAVMobile?.active?'1024':'2048')+'.webp';
+function tile(x,y){if(x<0||x>15||y<0||y>15)return null;const key=x+'-'+y;let item=tiles.get(key);if(item){item.used=performance.now();return item.ready?item.image:null;}
+ const limit=window.PAVMobile?.active?20:48;if(tiles.size>=limit){const victim=[...tiles.entries()].filter(([k,v])=>v.ready).sort((a,b)=>a[1].used-b[1].used)[0];if(!victim)return null;tiles.delete(victim[0]);}const image=new Image();item={image,ready:false,used:performance.now()};tiles.set(key,item);image.onload=()=>{item.ready=true;wake();};image.onerror=()=>{tiles.delete(key);};image.src='/pn/map/'+key+'.webp';const cap=window.PAVMobile?.active?20:48;
+ if(tiles.size>cap){const victim=[...tiles.entries()].filter(([k,v])=>v.ready&&k!==key).sort((a,b)=>a[1].used-b[1].used)[0];if(victim)tiles.delete(victim[0]);}return null;
+}
+const iconPaths={cafe:'M-5 1V-5L-1-2H1L5-5V1Q5 6 0 6Q-5 6-5 1ZM-2 1h.1M2 1h.1M-1 3H1',police:'M0-6L5-4V1Q4 5 0 7Q-4 5-5 1V-4ZM-2 0H2M0-2V2',medical:'M-2-6H2V-2H6V2H2V6H-2V2H-6V-2H-2Z',casino:'M-5-5H5V5H-5ZM-2-2h.1M2 2h.1M0 0h.1',bank:'M-6-2h12M-6 5h12M-4 4v-5M0 4v-5M4 4v-5M-6-3L0-6 6-3Z',weapons:'M-6-3h11v3H0l-2 6h-4l2-6h-2Z',market:'M-6-5h2l2 7h7l2-5H-2M-1 5h1M5 5h1',job:'M-6-3H6v8H-6ZM-3-3v-3h6v3M-6 0h12',dealer:'M-6 2l2-6h8l2 6v3H-6ZM-6 1H6M-3 5v1M3 5v1',hospital:'M-2-6H2v4H6v4H2v4H-2V2H-6V-2H-2Z',barber:'M-6-5L5 5M6-5L-5 5M-5 3a2 2 0 1 0 0 4a2 2 0 1 0 0-4M5 3a2 2 0 1 0 0 4a2 2 0 1 0 0-4',property:'M-6 0L0-6 6 0M-4-2V6H4V-2M-1 6V2H1V6'};
+const paths=Object.fromEntries(Object.entries(iconPaths).map(([k,p])=>[k,new Path2D(p)]));
+// 106: per-service colour badges (rounded square, white glyph, soft shadow) instead of one green ring.
+const kindColor106={cafe:'#ff8fc7',police:'#5aa9ff',medical:'#ff5d6c',hospital:'#ff5d6c',casino:'#ffcf5a',bank:'#6dffb0',weapons:'#ff9b57',market:'#9be06b',job:'#c59bff',dealer:'#ffd36b',barber:'#7ee7ff',property:'#f4eefc'};
+function markers(ctx,point,data,width,height){for(const service of [...(data?.services||[]),...(data?.properties||[]).map(p=>({...p,kind:'property'}))]){const [x,y]=point(service.x,service.y);if(x<10||y<10||x>width-10||y>height-20)continue;const tint=kindColor106[service.kind]||kindColor106.job;ctx.save();ctx.translate(x,y);ctx.shadowColor='rgba(0,0,0,.55)';ctx.shadowBlur=5;ctx.fillStyle='#140c20f2';ctx.beginPath();if(ctx.roundRect)ctx.roundRect(-9.5,-9.5,19,19,6);else ctx.arc(0,0,10,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;ctx.lineWidth=1.6;ctx.strokeStyle=tint;ctx.stroke();ctx.strokeStyle='#ffffff';ctx.lineWidth=1.5;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke(paths[service.kind]||paths.job);ctx.restore();}}
+window.PAVMap={subscribe:fn=>{listeners.add(fn);return()=>listeners.delete(fn);},paint(ctx,left,top,scale,width,height){ctx.fillStyle='#19282e';ctx.fillRect(0,0,width,height);if(ready)ctx.drawImage(overview,-left*scale,-top*scale,4096*scale,4096*scale);const x0=Math.max(0,Math.floor(left/256)),x1=Math.min(15,Math.floor((left+width/scale)/256)),y0=Math.max(0,Math.floor(top/256)),y1=Math.min(15,Math.floor((top+height/scale)/256));if((x1-x0+1)*(y1-y0+1)<=16)for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++){const image=tile(x,y);if(image)ctx.drawImage(image,(x*256-left)*scale,(y*256-top)*scale,256*scale,256*scale);}},markers,route(ctx,point,game){if(!game.bridge||!game.waypoint)return;const {memory,block}=game.bridge,a=new Int32Array(memory.buffer,block,16384),f=new Float32Array(memory.buffer,block,16384),seq=Atomics.load(a,6700);if(seq&1)return;const coords=[];for(let i=0;i<Math.min(128,a[6701]);i++)coords.push(point(f[6702+i*3],f[6703+i*3]));if(seq!==Atomics.load(a,6700))return;if(coords.length>1){ctx.strokeStyle='#bd87ff';ctx.lineWidth=3;ctx.beginPath();coords.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.stroke();}const [x,y]=point(game.waypoint.x,game.waypoint.y);ctx.fillStyle='#c49aff';ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fill();},tileCount:()=>tiles.size};
+
+/* Read the native police snapshot; no second canvas or entity scan. */
+const policeFrames84=new WeakMap(),reduced84=matchMedia('(prefers-reduced-motion: reduce)');
+window.PAVPoliceRadar84=(ctx,point,game,width,height,now)=>{
+ if(!game.bridge)return 0;
+ const {memory,block}=game.bridge,a=new Int32Array(memory.buffer,block,16384),f=new Float32Array(memory.buffer,block,16384),seq=Atomics.load(a,14506);
+ if(!seq||seq&1||a[62]||a[7610])return 0;
+ let state=policeFrames84.get(game);if(!state||state.seq!==seq){state={seq,at:now};policeFrames84.set(game,state);}
+ if(now-state.at>1500)return 0;
+ const rows=[],count=Math.max(0,Math.min(16,a[14505])),wanted=Math.max(0,Math.min(5,a[14504]));
+ for(let i=0;i<count;i++){const o=14512+i*5;rows.push([f[o+1],f[o+2],f[o+3],a[o+4]]);}
+ if(seq!==Atomics.load(a,14506))return 0;
+ const phase=Math.floor(now/375)%2,color=wanted&&!reduced84.matches?(phase?'#ff687e':'#65baff'):'#72baff';
+ let drawn=0;ctx.save();ctx.globalAlpha=reduced84.matches||phase?1:.75;
+ for(const [wx,wy,wz,kind]of rows){if(![wx,wy,wz].every(Number.isFinite))continue;let [x,y]=point(wx,wy);if(![x,y].every(Number.isFinite))continue;
+  // Cops just outside the zoomed map remain visible on its rim.
+  x=Math.max(8,Math.min(width-8,x));y=Math.max(8,Math.min(height-25,y));
+  ctx.fillStyle=color;ctx.strokeStyle='#10223b';ctx.lineWidth=2;ctx.beginPath();
+  if(kind===1)ctx.rect(x-5,y-3.5,10,7);else if(kind===2){ctx.moveTo(x,y-6);ctx.lineTo(x+5,y);ctx.lineTo(x,y+6);ctx.lineTo(x-5,y);ctx.closePath();}else ctx.arc(x,y,4.5,0,Math.PI*2);
+  ctx.stroke();ctx.fill();ctx.fillStyle='#f4f8ff';ctx.fillRect(x-1,y-1,2,2);drawn++;
+ }
+ ctx.restore();return drawn;
+};
+
+addEventListener('pav-game-created',({detail:game})=>{
+ const radar=game.hud.querySelector('.pn-radar-frame'),canvas=document.createElement('canvas');canvas.className='pav-map';canvas.setAttribute('aria-label','Los Santos haritası');radar.prepend(canvas);const ctx=canvas.getContext('2d',{alpha:false});let data=null,last=0,dirty=true,width=0,height=0,dpr=1,shown125=null,tick125=0;
+ const unwatch=PAVMap.subscribe(()=>dirty=true),resize=new ResizeObserver(([e])=>{width=Math.round(e.contentRect.width);height=Math.round(e.contentRect.height);dpr=Math.min(window.PAVMobile?.active?1:1.25,devicePixelRatio||1);canvas.width=width*dpr;canvas.height=height*dpr;dirty=true;});resize.observe(radar);const receive=e=>{data=e.detail;dirty=true;};addEventListener('pav-game-data',receive);
+ const render=now=>{if(!game.hud.isConnected){resize.disconnect();unwatch();removeEventListener('pav-game-data',receive);return;}requestAnimationFrame(render);if(document.hidden||!game.bridge||radar.hidden||now-last<32||!width||!height)return;const {memory,block}=game.bridge,a=new Int32Array(memory.buffer,block,16384),f=new Float32Array(memory.buffer,block,16384);a[108]=1;const target125=Number.isFinite(f[19])?f[19]:0,dt125=Math.min(.1,(now-(tick125||now))/1000);tick125=now;if(shown125===null)shown125=target125;else{const d125=((target125-shown125)%360+540)%360-180;shown125=Math.abs(d125)<.15?target125:shown125+d125*Math.min(1,dt125*14);}const settling125=shown125!==target125;const key123=Math.round(f[16]*4)+':'+Math.round(f[17]*4)+':'+Math.round(shown125*4);if(!dirty&&!settling125&&key123===self.__radarKey123&&now-(self.__radarAt123||0)<1000)return;self.__radarKey123=key123;self.__radarAt123=now;last=now;const [cx,cy]=project(f[16],f[17]),scale=game.vehicle?1.1:1.55,left=cx-width/scale/2,top=cy-height/scale/2,point=(x,y)=>{const p=project(x,y);return[(p[0]-left)*scale,(p[1]-top)*scale];};const turn123=shown125*Math.PI/180,diag123=Math.hypot(width,height);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle='#0d0815';ctx.fillRect(0,0,width,height);ctx.translate(width/2,height/2);ctx.rotate(turn123);ctx.translate(-width/2,-height/2);ctx.save();ctx.translate(-(diag123-width)/2,-(diag123-height)/2);PAVMap.paint(ctx,cx-diag123/scale/2,cy-diag123/scale/2,scale,diag123,diag123);ctx.restore();PAVMap.route(ctx,point,game);PAVMap.markers(ctx,point,data,width,height);for(const v of data?.vehicles||[]){const [x,y]=point(v.x,v.y);ctx.fillStyle=v.owner===game.character.id?'#cafa65':'#9ad2ef';ctx.fillRect(x-3,y-2,6,4);}PAVPoliceRadar84(ctx,point,game,width,height,now);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.save();ctx.translate(width/2,height/2);ctx.beginPath();ctx.moveTo(0,-8);ctx.lineTo(5,6);ctx.lineTo(0,3);ctx.lineTo(-5,6);ctx.closePath();ctx.fillStyle='#eaffca';ctx.strokeStyle='#101b1c';ctx.lineWidth=2;ctx.stroke();ctx.fill();ctx.restore();dirty=false;};requestAnimationFrame(render);
+});})();

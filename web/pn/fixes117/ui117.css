@@ -1,0 +1,19 @@
+/* PAVCITY UI 117: centered blurred-glass TAB list with a sliding vignette; microphone countdown. */
+/* TAB: small and centered; this one panel keeps a real backdrop blur (ui106 removes blur
+   everywhere else for the WebGPU canvas; the list is short-lived) */
+html body #pn-game.pav106.pav106 .p85-scoreboard.p85-scoreboard{top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;width:min(520px,86vw)!important;max-height:min(62vh,560px)!important;background:radial-gradient(420px 220px at 0% 0%,color-mix(in srgb,var(--v6-pink) 16%,transparent),transparent 62%),radial-gradient(400px 220px at 100% 100%,color-mix(in srgb,var(--v6-violet) 16%,transparent),transparent 62%),linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03) 45%,rgba(255,255,255,.05)),rgba(14,9,24,.58)!important;-webkit-backdrop-filter:blur(18px) saturate(150%)!important;backdrop-filter:blur(18px) saturate(150%)!important;animation:t117In .32s cubic-bezier(.2,.8,.2,1) both!important;z-index:141!important}
+@keyframes t117In{from{opacity:0;transform:translate(-50%,-47%) scale(.97)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+html body #pn-game .v117{position:fixed;inset:0;z-index:140;pointer-events:none}
+html body #pn-game .v117::before,html body #pn-game .v117::after{content:'';position:absolute;left:0;right:0;height:28vh;transition:transform .4s cubic-bezier(.2,.8,.2,1),opacity .4s ease;opacity:0}
+html body #pn-game .v117::before{top:0;background:linear-gradient(180deg,rgba(4,2,8,.82),rgba(4,2,8,0));transform:translateY(-100%)}
+html body #pn-game .v117::after{bottom:0;background:linear-gradient(0deg,rgba(4,2,8,.82),rgba(4,2,8,0));transform:translateY(100%)}
+html body #pn-game .v117.in::before,html body #pn-game .v117.in::after{transform:none;opacity:1}
+/* microphone countdown */
+html body #pn-game .m117{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:45;display:flex;align-items:center;gap:12px;max-width:min(520px,calc(100vw - 36px));padding:10px 16px 12px 10px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0) 50%),linear-gradient(160deg,rgba(30,19,46,.92),rgba(13,8,21,.92));box-shadow:0 12px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.1);color:#f6f1ff;font:600 12px/1.35 PAVSource,'Segoe UI',sans-serif;overflow:hidden;pointer-events:none}
+html body #pn-game .m117[hidden]{display:none}
+html body #pn-game .m117-i{display:grid;place-items:center;width:34px;height:34px;flex:none;border-radius:11px;background:rgba(255,207,90,.14);color:#ffcf5a}
+html body #pn-game .m117-i .pav105-i{width:17px;height:17px}
+html body #pn-game .m117 b{display:block;font:800 13.5px/1.2 PAVSource,'Segoe UI',sans-serif;color:#fff}
+html body #pn-game .m117 small{display:block;margin-top:2px;color:rgba(246,241,255,.6)}
+html body #pn-game .m117>i{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08)}
+html body #pn-game .m117>i em{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--v6-peach,#ffb36b),var(--v6-pink,#ff5fa8),var(--v6-violet,#a97bff));transition:width .6s linear}

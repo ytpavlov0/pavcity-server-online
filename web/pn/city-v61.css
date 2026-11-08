@@ -1,0 +1,13 @@
+.pav-properties .rp-job-cards:has(>article:only-child){grid-template-columns:minmax(0,1fr);max-width:540px;margin:auto}
+.pav-properties article{position:relative;border-top:3px solid #95bad2;padding:24px!important}
+.pav-properties article[data-sale=true]{border-top-color:#c5f66a}
+.pav-properties article[data-property-kind=office]{--property-color:#8dbce9}
+.pav-properties article[data-property-kind=apartment]{--property-color:#c5f66a}
+.pav-properties article[data-property-kind=garage]{--property-color:#f2c777}
+.pav-property-symbol61{display:grid;place-items:center;width:56px;height:56px;border:1px solid var(--property-color,#c5f66a);border-radius:14px;color:var(--property-color,#c5f66a);font-size:32px;margin-bottom:18px;background:#ffffff08}
+.pav-properties article h3{font-size:25px!important;margin:10px 0}
+.pav-properties article label{display:block;margin:14px 0 8px}
+.pav-properties button:disabled,.pav-garage61 button:disabled{opacity:.4;cursor:not-allowed}
+.pav-property-unavailable61{font-size:13px!important;line-height:1.5;color:#f0bf87!important;border-left:2px solid;padding-left:12px}
+.pav-garage-routes61{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.pav-garage61 .rp-job-cards{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}

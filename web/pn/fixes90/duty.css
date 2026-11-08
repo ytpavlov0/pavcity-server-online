@@ -1,0 +1,11 @@
+#pn-game .f69[data-kind="police"] .f69-hero{background:radial-gradient(ellipse at 100% 0,rgba(83,147,229,.19),transparent 65%),linear-gradient(125deg,#19263e,#171827);border:1px solid #89b9ef26}
+#pn-game .f69[data-kind="police"] .f69-hero small{color:#a5ceff}
+#pn-game .f90-duty{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:14px}
+#pn-game .f90-duty>.f69-card{min-width:0;border-color:#9dbde527;box-shadow:inset 0 1px 0 #ffffff06;background:linear-gradient(140deg,#252536,#1b1c2c);padding:20px}
+#pn-game .f90-duty>.f69-card:first-child{grid-column:1/-1;border-left:3px solid #98c7ff}
+#pn-game .f90-duty h3{font-size:16px;letter-spacing:-.2px}
+#pn-game .f90-duty p{font-size:13px;line-height:1.65;color:#b5bed0;margin:10px 0 18px;overflow-wrap:anywhere}
+#pn-game .f90-duty button{min-height:40px;border-radius:9px;font-size:12px;padding:10px 14px;max-width:100%;white-space:normal}
+#pn-game .f90-duty button:disabled{opacity:.48;cursor:default}
+#pn-game .f90-duty-tools{grid-column:1/-1;display:flex;justify-content:flex-end}
+@media(max-width:640px){#pn-game .f90-duty{grid-template-columns:minmax(0,1fr)}#pn-game .f90-duty-tools button{width:100%}}

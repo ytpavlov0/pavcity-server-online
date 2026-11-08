@@ -1,0 +1,84 @@
+/* PAVCITY 115: destek merkezi (F2) and şehir rehberi (/yardım) in the HUD palette. */
+html body #pn-game .rp-overlay.pav-support115 .rp-window,html body #pn-game .rp-overlay.pav-help115 .rp-window{width:min(1100px,95vw)!important;max-width:none!important;height:min(720px,90vh)!important;display:grid!important;grid-template-rows:auto 1fr auto!important;border-radius:22px!important;background:linear-gradient(165deg,#1d1130,#0e0817 72%)!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:0 40px 90px rgba(0,0,0,.6)!important;overflow:hidden!important}
+html body #pn-game .rp-overlay.pav-support115 .rp-content,html body #pn-game .rp-overlay.pav-help115 .rp-content{min-height:0!important;overflow:hidden!important;padding:0 18px 16px!important}
+html body #pn-game .rp-overlay.pav-support115 .rp-error:empty,html body #pn-game .rp-overlay.pav-help115 .rp-error:empty{display:none}
+html body #pn-game .pav-support115 *,html body #pn-game .pav-help115 *{box-sizing:border-box}
+html body #pn-game .pav-support115 button,html body #pn-game .pav-help115 button{font:inherit;color:inherit;cursor:pointer}
+html body #pn-game .s115-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:14px;height:100%;min-height:0;color:#efe8fb;font:500 13px/1.4 PAVSource,'Segoe UI',sans-serif}
+html body #pn-game .s115-list{display:flex;flex-direction:column;gap:10px;min-height:0}
+html body #pn-game .s115-compose{padding:11px 14px!important;border-radius:13px!important;border:0!important;background:linear-gradient(90deg,#ff5fa8,#a97bff)!important;color:#fff!important;font-weight:800!important;letter-spacing:.03em}
+html body #pn-game .s115-list nav{display:flex;gap:6px;flex-wrap:wrap}
+html body #pn-game .s115-list nav button{padding:7px 11px!important;border-radius:10px!important;border:1px solid rgba(255,255,255,.1)!important;background:rgba(255,255,255,.04)!important;font-weight:700!important;font-size:12px!important}
+html body #pn-game .s115-list nav button.on{border-color:rgba(255,95,168,.55)!important;background:rgba(255,95,168,.16)!important}
+html body #pn-game .s115-list nav i{font-style:normal;padding:1px 6px;border-radius:999px;background:rgba(255,255,255,.12);font-size:10px}
+html body #pn-game .s115-search,html body #pn-game .s115-form input,html body #pn-game .s115-form select,html body #pn-game .s115-form textarea,html body #pn-game .s115-reply textarea{width:100%;padding:10px 12px;border-radius:11px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.28);color:#fff;font:inherit;outline:none}
+html body #pn-game .s115-form textarea{min-height:150px;resize:vertical}
+html body #pn-game .s115-reply textarea{min-height:70px;max-height:140px;resize:vertical}
+html body #pn-game .s115-tickets{display:flex;flex-direction:column;gap:6px;overflow-y:auto;min-height:0;padding-right:3px}
+html body #pn-game .s115-tickets button{display:grid;gap:3px;padding:10px 12px!important;border-radius:13px!important;border:1px solid rgba(255,255,255,.07)!important;background:rgba(255,255,255,.035)!important;text-align:left!important}
+html body #pn-game .s115-tickets button.on{border-color:rgba(255,95,168,.6)!important;background:linear-gradient(90deg,rgba(255,95,168,.16),rgba(169,123,255,.08))!important}
+html body #pn-game .s115-tickets small{color:#ff9fd0;font-weight:800;font-size:10.5px;letter-spacing:.05em}
+html body #pn-game .s115-tickets small b{display:inline-block;margin-left:6px;padding:0 6px;border-radius:999px;background:#ff5fa8;color:#fff}
+html body #pn-game .s115-tickets strong{color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html body #pn-game .s115-tickets span{color:#a99cc2;font-size:11.5px}
+html body #pn-game .s115-muted{margin:0;color:#8f84a8;font-size:12px}
+html body #pn-game .s115-main{min-height:0;overflow:hidden;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07)}
+html body #pn-game .s115-new{height:100%;overflow-y:auto;padding:18px}
+html body #pn-game .s115-new small,html body #pn-game .s115-detail header small{color:#ff8cc4;font-weight:900;font-size:10px;letter-spacing:.2em}
+html body #pn-game .s115-new h3,html body #pn-game .s115-detail h3{margin:4px 0 6px;font:800 19px/1.2 PAVSource,'Segoe UI',sans-serif;color:#fff}
+html body #pn-game .s115-new>p{margin:0 0 14px;color:#b9add2}
+html body #pn-game .s115-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+html body #pn-game .s115-form label{display:grid;gap:6px;font-weight:700;font-size:12px;color:#d8cdee}
+html body #pn-game .s115-form .wide,html body #pn-game .s115-form footer{grid-column:1/-1}
+html body #pn-game .s115-form footer,html body #pn-game .s115-reply footer{display:flex;align-items:center;justify-content:flex-end;gap:10px}
+html body #pn-game .s115-form footer small{margin-right:auto;color:#8f84a8;letter-spacing:0;font-weight:600}
+html body #pn-game .s115-form footer button,html body #pn-game .s115-reply button,html body #pn-game .s115-actions button,html body #pn-game .s115-rate button{padding:9px 14px!important;border-radius:11px!important;border:1px solid rgba(255,255,255,.14)!important;background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03))!important;font-weight:700!important}
+html body #pn-game .s115-form footer button,html body #pn-game .s115-reply button.ok{border:0!important;background:linear-gradient(90deg,#ff5fa8,#a97bff)!important;color:#fff!important}
+html body #pn-game .s115-actions button.ghost{background:transparent!important;color:#ff9fae!important;border-color:rgba(255,107,127,.35)!important}
+html body #pn-game .s115-detail{display:grid;grid-template-rows:auto auto auto minmax(0,1fr) auto auto;gap:10px;height:100%;padding:16px 18px}
+html body #pn-game .s115-detail>header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+html body #pn-game .s115-detail>header p{margin:0;color:#a99cc2;font-size:12px}
+html body #pn-game .s115-state{flex:none;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:800;background:rgba(255,207,90,.14);color:#ffcf5a}
+html body #pn-game .s115-state.claimed{background:rgba(95,242,224,.14);color:#5ff2e0}
+html body #pn-game .s115-state.closed{background:rgba(125,255,180,.12);color:#7dffb4}
+html body #pn-game .s115-actions{display:flex;gap:8px;flex-wrap:wrap}
+html body #pn-game .s115-context{display:grid;gap:3px;padding:10px 12px;border-radius:12px;background:rgba(95,242,224,.06);border:1px solid rgba(95,242,224,.22);font-size:12px;color:#cfeee9}
+html body #pn-game .s115-context b{color:#5ff2e0;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+html body #pn-game .s115-thread{display:flex;flex-direction:column;gap:8px;overflow-y:auto;min-height:0;padding-right:4px}
+html body #pn-game .s115-thread article{max-width:82%;padding:9px 12px;border-radius:14px 14px 14px 4px;background:rgba(255,255,255,.06)}
+html body #pn-game .s115-thread article.staff{align-self:flex-end;border-radius:14px 14px 4px 14px;background:linear-gradient(135deg,rgba(255,95,168,.2),rgba(169,123,255,.16))}
+html body #pn-game .s115-thread article header{display:flex;gap:10px;justify-content:space-between;font-size:11px;color:#c8bbe0}
+html body #pn-game .s115-thread article p{margin:4px 0 0;white-space:pre-wrap;word-break:break-word;color:#fff}
+html body #pn-game .s115-events{display:flex;gap:6px;flex-wrap:wrap}
+html body #pn-game .s115-events span{padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.05);font-size:10.5px;color:#9d92b6}
+html body #pn-game .s115-reply{display:grid;gap:8px}
+html body #pn-game .s115-rate{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+/* şehir rehberi */
+html body #pn-game .h115{display:grid;grid-template-columns:230px minmax(0,1fr);gap:14px;height:100%;min-height:0;color:#efe8fb;font:500 13.5px/1.5 PAVSource,'Segoe UI',sans-serif}
+html body #pn-game .h115 nav{display:flex;flex-direction:column;gap:5px;overflow-y:auto;min-height:0}
+html body #pn-game .h115 nav button{display:flex;align-items:center;gap:10px;padding:10px 12px!important;border-radius:12px!important;border:1px solid transparent!important;background:transparent!important;color:#c8bbe0!important;font-weight:700!important;text-align:left!important}
+html body #pn-game .h115 nav button .pav105-i{width:16px;height:16px;flex:none}
+html body #pn-game .h115 nav button.on{background:linear-gradient(90deg,rgba(255,95,168,.18),rgba(169,123,255,.08))!important;border-color:rgba(255,95,168,.45)!important;color:#fff!important}
+html body #pn-game .h115 nav .h115-search{margin-bottom:6px;width:100%;padding:9px 11px;border-radius:11px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.28);color:#fff;font:inherit;outline:none}
+html body #pn-game .h115-body{overflow-y:auto;min-height:0;padding:18px 20px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07)}
+html body #pn-game .h115-body h3{margin:0 0 4px;font:800 21px/1.2 PAVSource,'Segoe UI',sans-serif;color:#fff}
+html body #pn-game .h115-body>p.lead{margin:0 0 14px;color:#b9add2}
+html body #pn-game .h115-body h4{margin:16px 0 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#ff8cc4}
+html body #pn-game .h115-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+html body #pn-game .h115-cards article{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+html body #pn-game .h115-cards article b{display:block;color:#fff;margin-bottom:3px}
+html body #pn-game .h115-cards article span{color:#c3b7da;font-size:12.5px}
+html body #pn-game .h115-cards article em{display:inline-block;margin-top:6px;font-style:normal;padding:2px 8px;border-radius:999px;background:rgba(125,255,180,.12);color:#7dffb4;font-size:11.5px;font-weight:800}
+html body #pn-game .h115-table{display:grid;gap:4px}
+html body #pn-game .h115-table div{display:grid;grid-template-columns:minmax(150px,240px) 1fr;gap:12px;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,.035)}
+html body #pn-game .h115-table code{color:#ffd36b;font:700 12.5px/1.4 Consolas,'Cascadia Mono',monospace;word-break:break-word}
+html body #pn-game .h115-table span{color:#d8cdee}
+html body #pn-game .h115-keys{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+html body #pn-game .h115-keys div{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:11px;background:rgba(255,255,255,.035)}
+html body #pn-game .h115-keys kbd{min-width:34px;padding:4px 7px;border-radius:8px;background:linear-gradient(180deg,#3a2a52,#21162f);border:1px solid rgba(255,255,255,.18);box-shadow:0 2px 0 rgba(0,0,0,.5);color:#fff;font:800 11px/1 PAVSource,'Segoe UI',sans-serif;text-align:center}
+html body #pn-game .h115-note{margin:14px 0 0;padding:12px 14px;border-radius:14px;background:rgba(255,207,90,.08);border:1px solid rgba(255,207,90,.28);color:#ffe6a8}
+html body #pn-game .h115-discord{display:flex;align-items:center;gap:14px;margin-top:14px;padding:14px 16px;border-radius:16px;background:linear-gradient(120deg,rgba(88,101,242,.28),rgba(169,123,255,.14));border:1px solid rgba(120,132,255,.45)}
+html body #pn-game .h115-discord b{display:block;color:#fff;font-size:15px}
+html body #pn-game .h115-discord span{color:#d5d9ff}
+html body #pn-game .h115-discord button{margin-left:auto;padding:10px 14px!important;border-radius:12px!important;border:0!important;background:#5865f2!important;color:#fff!important;font-weight:800!important;white-space:nowrap}
+@media (max-width:760px){html body #pn-game .s115-layout,html body #pn-game .h115{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}html body #pn-game .s115-list{max-height:34vh}html body #pn-game .h115 nav{flex-direction:row;overflow-x:auto}html body #pn-game .s115-form{grid-template-columns:1fr}html body #pn-game .h115-table div{grid-template-columns:1fr}}

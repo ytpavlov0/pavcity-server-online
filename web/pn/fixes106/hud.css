@@ -1,0 +1,136 @@
+/* PAVCITY HUD 106 — "Vice" layer. Loaded last; restyles the existing DOM and keeps every
+ * selector, the HUD-editor contract (.p84-positioned, --hud-x84/--hud-y84/--hud-scale84)
+ * and the radar geometry that client.js writes inline to match the native minimap. */
+#pn-game.pav106{--v6-ink:#0d0815;--v6-panel:rgba(15,10,24,.84);--v6-panel-2:rgba(24,16,38,.9);--v6-line:rgba(255,255,255,.09);--v6-line-2:rgba(255,255,255,.16);--v6-text:#f6f1ff;--v6-muted:#a99cbd;--v6-pink:#ff5fa8;--v6-peach:#ffb36b;--v6-violet:#a97bff;--v6-aqua:#5ff2e0;--v6-cash:#7dffb4;--v6-grad:linear-gradient(90deg,var(--v6-peach),var(--v6-pink) 52%,var(--v6-violet));--v6-shadow:0 18px 40px rgba(0,0,0,.42);--v6-text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 18px rgba(0,0,0,.45);--v6-display:PAVViceBold,PAVVice,Impact,sans-serif;--v6-body:PAVSource,'Segoe UI',Arial,sans-serif}
+html[data-pav-palette82=lagoon] #pn-game.pav106{--v6-pink:#3ee0d0;--v6-peach:#7cf2ff;--v6-violet:#4b8bff}
+html[data-pav-palette82=violet] #pn-game.pav106{--v6-pink:#c56bff;--v6-peach:#ff7ad9;--v6-violet:#6c63ff}
+html[data-pav-palette82=gold] #pn-game.pav106{--v6-pink:#ffb547;--v6-peach:#ffe08a;--v6-violet:#ff7a59}
+
+/* Performance: no live backdrop blur over the WebGPU canvas anywhere in the game UI. */
+html body #pn-game.pav106.pav106 *,html body #pn-game.pav106.pav106 *::before,html body #pn-game.pav106.pav106 *::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html body #pn-game.pav106.pav106 .pav105-i{width:1em;height:1em;flex:none;display:inline-block;vertical-align:-.14em}
+
+/* ---------- Top-right: GTA VI style money / identity stack ---------- */
+html body #pn-game.pav106.pav106 .pn-live>.p84-status-stack:not(.p84-positioned){top:22px!important;right:26px!important;left:auto!important;bottom:auto!important}
+html body #pn-game.pav106.pav106 .p84-status-stack{display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:8px!important;width:auto!important;pointer-events:none}
+html body #pn-game.pav106.pav106 .pn-top-hud{position:relative!important;display:flex!important;flex-direction:column!important;align-items:flex-end!important;gap:3px!important;width:auto!important;min-width:0!important;max-width:340px!important;padding:12px 16px 12px 40px!important;margin:0!important;border:0!important;border-radius:0!important;background:radial-gradient(120% 140% at 100% 0,rgba(10,6,18,.62),rgba(10,6,18,.28) 55%,transparent 78%)!important;box-shadow:none!important;color:var(--v6-text)!important;text-align:right!important;font-family:var(--v6-body)!important}
+html body #pn-game.pav106.pav106 .pn-top-hud::before,html body #pn-game.pav106.pav106 .pn-top-hud::after{display:none!important}
+html body #pn-game.pav106.pav106 .pn-top-hud>header{order:1;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:7px!important;margin:0!important;padding:0!important;border:0!important;background:none!important}
+html body #pn-game.pav106.pav106 .pn-top-hud>header img{width:20px!important;height:20px!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))!important}
+html body #pn-game.pav106.pav106 .pn-top-hud>header strong{font:16px/1 var(--v6-display)!important;letter-spacing:.06em!important;background:var(--v6-grad)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;text-shadow:none!important;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6))}
+html body #pn-game.pav106.pav106 .pn-top-hud>header small{display:none!important}
+html body #pn-game.pav106.pav106 .pav-city-meta{order:0;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;position:static!important;margin:0 0 2px!important;padding:0!important;background:none!important;border:0!important;font:600 11px/1 var(--v6-body)!important;letter-spacing:.08em!important;color:var(--v6-muted)!important;text-transform:uppercase}
+html body #pn-game.pav106.pav106 .pav-city-meta>*{display:inline-flex!important;align-items:center;gap:5px;padding:4px 8px!important;border-radius:99px!important;background:rgba(12,8,20,.66)!important;border:1px solid var(--v6-line)!important;color:var(--v6-text)!important;font:inherit!important;text-shadow:none!important}
+html body #pn-game.pav106.pav106 .pav-city-meta .pn-player-count{color:var(--v6-aqua)!important}
+html body #pn-game.pav106.pav106 .pn-identity{order:2;display:flex!important;align-items:baseline!important;justify-content:flex-end!important;gap:8px!important;margin:4px 0 0!important;padding:0!important;background:none!important;border:0!important}
+html body #pn-game.pav106.pav106 .pn-player-name{font:700 13px/1.1 var(--v6-body)!important;letter-spacing:.06em!important;text-transform:uppercase;color:var(--v6-text)!important;text-shadow:var(--v6-text-shadow)!important;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html body #pn-game.pav106.pav106 .pn-own-id{font:700 10px/1 var(--v6-body)!important;letter-spacing:.08em;padding:3px 6px!important;border-radius:6px!important;background:var(--v6-grad)!important;color:#1a0b1a!important;text-shadow:none!important}
+html body #pn-game.pav106.pav106 .pn-wallet{order:3;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:8px!important;margin:0!important;padding:0!important;background:none!important;border:0!important}
+html body #pn-game.pav106.pav106 .pn-money{display:inline-flex!important;align-items:center;gap:6px;font:36px/1 var(--v6-display)!important;letter-spacing:.01em!important;color:#fff!important;text-shadow:var(--v6-text-shadow)!important;font-variant-numeric:tabular-nums}
+html body #pn-game.pav106.pav106 .pn-money .pav105-i{width:24px;height:24px;color:var(--v6-cash);filter:drop-shadow(0 1px 1px rgba(0,0,0,.6))}
+html body #pn-game.pav106.pav106 .pn-money.pav106-tick{animation:v6Cash .6s ease-out}
+@keyframes v6Cash{0%{color:var(--v6-cash);transform:scale(1.06)}100%{color:#fff;transform:none}}
+html body #pn-game.pav106.pav106 .pn-admin-label{font:700 10px/1 var(--v6-body)!important;padding:4px 7px!important;border-radius:6px!important;background:rgba(255,95,168,.18)!important;color:var(--v6-pink)!important;border:1px solid rgba(255,95,168,.45)!important}
+html body #pn-game.pav106.pav106 .pav-bank-balance{order:4;display:inline-flex!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;margin:0!important;padding:0!important;background:none!important;border:0!important;color:var(--v6-muted)!important;font:600 12px/1 var(--v6-body)!important;letter-spacing:.06em;text-shadow:var(--v6-text-shadow)!important}
+html body #pn-game.pav106.pav106 .pav-bank-balance svg{width:14px!important;height:14px!important;color:var(--v6-cash)!important}
+html body #pn-game.pav106.pav106 .pav-bank-balance b{font:20px/1 var(--v6-display)!important;color:#e9fff3!important;font-variant-numeric:tabular-nums}
+html body #pn-game.pav106.pav106 .p84-wanted{margin:0!important;filter:drop-shadow(0 2px 2px rgba(0,0,0,.6))}
+
+/* Ammo: big numerals, weapon icon, no card */
+html body #pn-game.pav106.pav106 .p82-ammo{position:relative!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:10px!important;margin:0!important;padding:6px 16px 6px 34px!important;min-width:0!important;width:auto!important;border:0!important;border-radius:0!important;background:radial-gradient(120% 160% at 100% 50%,rgba(10,6,18,.55),transparent 75%)!important;box-shadow:none!important;color:#fff!important}
+html body #pn-game.pav106.pav106 .p82-ammo.unarmed{display:none!important}
+html body #pn-game.pav106.pav106 .p82-ammo .pav-ammo-icon{width:22px!important;height:22px!important;color:var(--v6-peach)!important}
+html body #pn-game.pav106.pav106 .p82-ammo .pn-weapon-label{font:700 10px/1 var(--v6-body)!important;letter-spacing:.14em!important;color:var(--v6-muted)!important;text-transform:uppercase}
+html body #pn-game.pav106.pav106 .p82-ammo strong{font:34px/1 var(--v6-display)!important;color:#fff!important;text-shadow:var(--v6-text-shadow)!important;font-variant-numeric:tabular-nums}
+html body #pn-game.pav106.pav106 .p82-ammo .pn-ammo-reserve{font:18px/1 var(--v6-display)!important;color:var(--v6-muted)!important;text-shadow:var(--v6-text-shadow)!important}
+
+/* ---------- Bottom-left radar: frame only — geometry stays native-aligned ---------- */
+html body #pn-game.pav106.pav106 .pn-radar-frame{border:0!important;border-radius:16px!important;background:transparent!important;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 0 4px rgba(10,6,18,.55),0 14px 34px rgba(0,0,0,.45)!important;overflow:visible!important}
+html body #pn-game.pav106.pav106 .pn-radar-frame canvas.pav-map{border-radius:16px!important}
+html body #pn-game.pav106.pav106 .pn-radar-frame::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:linear-gradient(180deg,rgba(10,6,18,.0) 62%,rgba(10,6,18,.55));}
+html body #pn-game.pav106.pav106 .pn-radar-heading{position:absolute!important;top:8px!important;left:8px!important;right:auto!important;transform:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;margin:0!important;padding:4px 10px!important;border-radius:99px!important;background:rgba(12,8,20,.78)!important;border:1px solid var(--v6-line-2)!important;box-shadow:0 4px 12px rgba(0,0,0,.35)!important;z-index:3;font:700 11px/1 var(--v6-body)!important;letter-spacing:.12em!important;color:var(--v6-text)!important}
+html body #pn-game.pav106.pav106 .pn-radar-heading b{font:12px/1 var(--v6-display)!important;background:var(--v6-grad)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+html body #pn-game.pav106.pav106 .pn-radar-heading .pn-compass{display:inline-flex;align-items:center;gap:4px;color:var(--v6-text)!important}
+html body #pn-game.pav106.pav106 .pn-radar-frame>footer{position:absolute!important;left:10px!important;right:10px!important;bottom:8px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;margin:0!important;padding:0!important;background:none!important;border:0!important;z-index:3;font:700 10px/1 var(--v6-body)!important;letter-spacing:.1em!important;color:var(--v6-text)!important;text-shadow:0 1px 2px rgba(0,0,0,.8)!important}
+html body #pn-game.pav106.pav106 .pn-radar-speed{font:16px/1 var(--v6-display)!important;letter-spacing:.02em!important;padding:4px 8px;border-radius:8px;background:rgba(12,8,20,.72);border:1px solid var(--v6-line)}
+html body #pn-game.pav106.pav106 .pn-radar-id{padding:4px 7px;border-radius:7px;background:rgba(12,8,20,.72);border:1px solid var(--v6-line);color:var(--v6-muted)!important}
+html body #pn-game.pav106.pav106 .pav-map-location{position:absolute!important;left:2px!important;right:auto!important;top:auto!important;bottom:calc(100% + 10px)!important;display:flex!important;align-items:center!important;gap:7px!important;margin:0!important;padding:0!important;background:none!important;border:0!important;font:22px/1 var(--v6-display)!important;letter-spacing:.03em!important;color:#fff!important;text-shadow:var(--v6-text-shadow)!important;white-space:nowrap;text-transform:uppercase}
+html body #pn-game.pav106.pav106 .pav-map-location svg,html body #pn-game.pav106.pav106 .pav-map-location .pav105-i{width:18px!important;height:18px!important;color:var(--v6-pink)!important;filter:drop-shadow(0 1px 1px rgba(0,0,0,.7))}
+html body #pn-game.pav106.pav106 .pav-weather39{position:absolute!important;top:8px!important;right:8px!important;left:auto!important;display:inline-flex!important;align-items:center!important;gap:5px!important;padding:4px 8px!important;border-radius:99px!important;background:rgba(12,8,20,.78)!important;border:1px solid var(--v6-line)!important;z-index:3;font:700 10px/1 var(--v6-body)!important;letter-spacing:.06em!important;color:var(--v6-text)!important}
+html body #pn-game.pav106.pav106 .pav-weather39 time{font:13px/1 var(--v6-display)!important;color:#fff!important}
+html body #pn-game.pav106.pav106 .pav-weather39 svg{width:13px!important;height:13px!important;color:var(--v6-peach)!important}
+html body #pn-game.pav106.pav106 .pav-radar-route{border-radius:10px!important;background:rgba(12,8,20,.82)!important;border:1px solid var(--v6-line-2)!important;font-family:var(--v6-body)!important}
+
+/* ---------- Bottom-right: key chips, eye, voice ---------- */
+html body #pn-game.pav106.pav106 .pn-tools{gap:8px!important;align-items:flex-end!important}
+html body #pn-game.pav106.pav106 .pn-tools>span{display:inline-flex!important;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:5px 7px!important;padding:7px 10px!important;border-radius:12px!important;background:rgba(12,8,20,.7)!important;border:1px solid var(--v6-line)!important;box-shadow:none!important;font:600 11px/1 var(--v6-body)!important;letter-spacing:.04em;color:var(--v6-muted)!important}
+html body #pn-game.pav106.pav106 .pn-tools kbd,html body #pn-game.pav106.pav106 .pav-target-eye kbd{display:inline-grid!important;place-items:center;min-width:20px;height:20px;padding:0 5px!important;border-radius:6px!important;background:#f6f1ff!important;color:#160c22!important;border:0!important;box-shadow:0 2px 0 rgba(0,0,0,.45)!important;font:800 10px/1 var(--v6-body)!important;letter-spacing:0}
+html body #pn-game.pav106.pav106 .pn-voice{display:inline-flex!important;align-items:center!important;gap:7px!important;padding:8px 12px!important;border-radius:99px!important;background:rgba(12,8,20,.78)!important;border:1px solid var(--v6-line-2)!important;color:var(--v6-text)!important;font:700 11px/1 var(--v6-body)!important;transition:border-color .2s,box-shadow .2s}
+html body #pn-game.pav106.pav106 .pn-voice svg{width:14px!important;height:14px!important}
+html body #pn-game.pav106.pav106 .pn-voice.enabled{border-color:rgba(95,242,224,.55)!important;color:var(--v6-aqua)!important}
+html body #pn-game.pav106.pav106 .pn-voice.talking{border-color:var(--v6-pink)!important;color:#fff!important;box-shadow:0 0 0 3px rgba(255,95,168,.25),0 0 18px rgba(255,95,168,.45)!important}
+html body #pn-game.pav106.pav106 .pav-target-eye{display:inline-flex!important;align-items:center!important;gap:7px!important;padding:8px 11px!important;border-radius:12px!important;background:rgba(12,8,20,.78)!important;border:1px solid var(--v6-line-2)!important;color:var(--v6-text)!important;font:700 11px/1 var(--v6-body)!important}
+html body #pn-game.pav106.pav106 .pav-target-eye.active,html body #pn-game.pav106.pav106 .pav-target-eye[aria-pressed=true]{border-color:var(--v6-aqua)!important;color:var(--v6-aqua)!important}
+
+/* ---------- ESC menu: lighter, animated, opaque gradients (no blur) ---------- */
+html body #pn-game.pav106.pav106 .pn-menu{background:radial-gradient(90% 80% at 50% 40%,rgba(10,6,18,.55),rgba(6,3,12,.86))!important}
+html body #pn-game.pav106.pav106 .pn-menu:not([hidden]) .pav-menu-shell{animation:v6Open .32s cubic-bezier(.2,.8,.2,1) both}
+@keyframes v6Open{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+html body #pn-game.pav106.pav106 .pav-menu-shell.p82-menu{background:linear-gradient(160deg,#1a1028 0%,#120b1d 46%,#0d0816 100%)!important;border:1px solid var(--v6-line-2)!important;border-radius:22px!important;box-shadow:0 40px 90px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06)!important;overflow:hidden!important;contain:layout paint}
+html body #pn-game.pav106.pav106 .pav-menu-shell.p82-menu::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--v6-grad);background-size:200% 100%;animation:v6Sheen 6s linear infinite;z-index:2;pointer-events:none}
+@keyframes v6Sheen{to{background-position:200% 0}}
+html body #pn-game.pav106.pav106 .pav-menu-tabs [data-tab]{border-radius:14px!important;transition:background .18s,transform .18s,box-shadow .18s!important}
+html body #pn-game.pav106.pav106 .pav-menu-tabs [data-tab]:hover{transform:translateX(3px)}
+html body #pn-game.pav106.pav106 .pav-menu-tabs [data-tab][aria-pressed=true]{background:var(--v6-grad)!important;color:#1a0b1a!important;box-shadow:0 10px 26px rgba(255,95,168,.28)!important}
+html body #pn-game.pav106.pav106 .p82-city-hero{border-radius:18px!important;border:1px solid var(--v6-line-2)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)!important}
+html body #pn-game.pav106.pav106 .p82-city-hero h3{font-family:var(--v6-display)!important;letter-spacing:.01em!important}
+html body #pn-game.pav106.pav106 .p82-menu-summary article{border-radius:16px!important;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.02))!important;border:1px solid var(--v6-line)!important}
+html body #pn-game.pav106.pav106 .p82-menu-summary article strong{font-family:var(--v6-display)!important;font-variant-numeric:tabular-nums}
+html body #pn-game.pav106.pav106 .p82-menu-summary article:first-child strong{color:var(--v6-cash)!important}
+html body #pn-game.pav106.pav106 .pav-city-launchers>button{position:relative!important;overflow:hidden!important;border-radius:16px!important;background:linear-gradient(160deg,rgba(255,255,255,.065),rgba(255,255,255,.02))!important;border:1px solid var(--v6-line)!important;transition:transform .18s cubic-bezier(.2,.8,.2,1),border-color .18s,box-shadow .18s!important}
+html body #pn-game.pav106.pav106 .pn-menu:not([hidden]) .pav-city-launchers>button{animation:v6Tile .36s cubic-bezier(.2,.8,.2,1) both}
+html body #pn-game.pav106.pav106 .pav-city-launchers>button:nth-child(2){animation-delay:.03s}html body #pn-game.pav106.pav106 .pav-city-launchers>button:nth-child(3){animation-delay:.06s}html body #pn-game.pav106.pav106 .pav-city-launchers>button:nth-child(4){animation-delay:.09s}html body #pn-game.pav106.pav106 .pav-city-launchers>button:nth-child(5){animation-delay:.12s}html body #pn-game.pav106.pav106 .pav-city-launchers>button:nth-child(6){animation-delay:.15s}html body #pn-game.pav106.pav106 .pav-city-launchers>button:nth-child(7){animation-delay:.18s}html body #pn-game.pav106.pav106 .pav-city-launchers>button:nth-child(8){animation-delay:.21s}html body #pn-game.pav106.pav106 .pav-city-launchers>button:nth-child(9){animation-delay:.24s}
+@keyframes v6Tile{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+html body #pn-game.pav106.pav106 .pav-city-launchers>button::after{content:"";position:absolute;inset:auto -30% -60% -30%;height:80%;background:radial-gradient(closest-side,rgba(255,95,168,.35),transparent);opacity:0;transition:opacity .2s;pointer-events:none}
+html body #pn-game.pav106.pav106 .pav-city-launchers>button:hover,html body #pn-game.pav106.pav106 .pav-city-launchers>button:focus-visible{transform:translateY(-3px)!important;border-color:rgba(255,95,168,.55)!important;box-shadow:0 14px 30px rgba(0,0,0,.35),0 0 0 1px rgba(255,95,168,.25)!important}
+html body #pn-game.pav106.pav106 .pav-city-launchers>button:hover::after{opacity:1}
+html body #pn-game.pav106.pav106 .pav-city-launchers>button>span .pav105-i{width:26px;height:26px;color:var(--v6-pink)}
+html body #pn-game.pav106.pav106 .pav-city-launchers>button>span .p83-icon{display:none!important}
+html body #pn-game.pav106.pav106 .pav-city-launchers>button kbd:empty{display:none!important}
+html body #pn-game.pav106.pav106 .pav-city-launchers>button kbd{border-radius:6px!important;background:rgba(255,255,255,.08)!important;border:1px solid var(--v6-line)!important;color:var(--v6-muted)!important}
+html body #pn-game.pav106.pav106 .pav-city-mission{border-radius:18px!important;border:1px solid rgba(255,95,168,.28)!important;background:linear-gradient(150deg,rgba(255,95,168,.14),rgba(169,123,255,.08) 60%,rgba(255,255,255,.02))!important}
+html body #pn-game.pav106.pav106 .pav-city-shortcuts>button{border-radius:14px!important;transition:border-color .18s,background .18s!important}
+html body #pn-game.pav106.pav106 .pav-city-shortcuts>button:hover{border-color:rgba(255,95,168,.45)!important;background:rgba(255,95,168,.08)!important}
+html body #pn-game.pav106.pav106 .pav-menu-resume,html body #pn-game.pav106.pav106 .pn-resume{background:var(--v6-grad)!important;background-size:160% 100%!important;color:#1a0b1a!important;border:0!important;border-radius:14px!important;font-weight:800!important;letter-spacing:.04em;transition:background-position .4s,transform .18s,box-shadow .18s!important}
+html body #pn-game.pav106.pav106 .pav-menu-resume:hover,html body #pn-game.pav106.pav106 .pn-resume:hover{background-position:100% 0!important;transform:translateY(-1px);box-shadow:0 12px 28px rgba(255,95,168,.35)!important}
+
+/* ---------- TAB scoreboard ---------- */
+html body #pn-game.pav106.pav106 .p85-scoreboard{border-radius:20px!important;background:linear-gradient(165deg,#1a1028,#0e0817 70%)!important;border:1px solid var(--v6-line-2)!important;box-shadow:0 30px 70px rgba(0,0,0,.55)!important;overflow:hidden!important;animation:v6Open .26s cubic-bezier(.2,.8,.2,1) both}
+html body #pn-game.pav106.pav106 .p85-scoreboard::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--v6-grad)}
+html body #pn-game.pav106.pav106 .p85-scoreboard h2{font-family:var(--v6-display)!important;letter-spacing:.04em!important;background:var(--v6-grad);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+html body #pn-game.pav106.pav106 .p85-roster article{border-radius:12px!important;background:rgba(255,255,255,.035)!important;border:1px solid var(--v6-line)!important;transition:background .15s,border-color .15s}
+html body #pn-game.pav106.pav106 .p85-roster article:hover{background:rgba(255,95,168,.08)!important;border-color:rgba(255,95,168,.3)!important}
+html body #pn-game.pav106.pav106 .p85-roster article>b{display:inline-grid;place-items:center;min-width:34px;padding:4px 6px;border-radius:8px;background:var(--v6-grad);color:#1a0b1a!important;font:800 11px/1 var(--v6-body)!important}
+
+/* ---------- Jobs: illustrated cards ---------- */
+html body .rp-overlay.rp-jobs .rp-job-cards{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))!important;gap:14px!important}
+html body .rp-overlay.rp-jobs .rp-job-cards>article{position:relative!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;min-height:210px!important;padding:14px!important;border-radius:18px!important;overflow:hidden!important;border:1px solid rgba(255,255,255,.12)!important;background:#140c20 var(--job106) center/cover no-repeat!important;box-shadow:0 14px 30px rgba(0,0,0,.35)!important;transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s,border-color .2s!important;isolation:isolate}
+html body .rp-overlay.rp-jobs .rp-job-cards>article::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(13,8,21,0) 0%,rgba(13,8,21,.08) 38%,rgba(13,8,21,.9) 78%)}
+html body .rp-overlay.rp-jobs .rp-job-cards>article:hover{transform:translateY(-3px)!important;border-color:rgba(255,95,168,.5)!important;box-shadow:0 18px 38px rgba(0,0,0,.45),0 0 0 1px rgba(255,95,168,.2)!important}
+html body .rp-overlay.rp-jobs .rp-job-cards>article>small{position:absolute!important;top:12px!important;left:12px!important;padding:4px 8px!important;border-radius:99px!important;font:800 10px/1 PAVSource,'Segoe UI',sans-serif!important;letter-spacing:.12em!important;background:rgba(125,255,180,.18)!important;color:#7dffb4!important;border:1px solid rgba(125,255,180,.4)!important}
+html body .rp-overlay.rp-jobs .rp-job-cards>article.illegal106>small{background:rgba(255,93,108,.18)!important;color:#ff8a95!important;border-color:rgba(255,93,108,.45)!important}
+html body .rp-overlay.rp-jobs .rp-job-cards>article h3{margin:0 0 4px!important;font:24px/1.05 PAVViceBold,PAVVice,Impact,sans-serif!important;color:#fff!important;text-shadow:0 2px 0 rgba(0,0,0,.5)!important}
+html body .rp-overlay.rp-jobs .rp-job-cards>article p{margin:0 0 10px!important;color:#e6dcf5!important;font-size:12px!important}
+html body .rp-overlay.rp-jobs .rp-job-cards>article .pay106{display:inline-block;margin-left:4px;color:#7dffb4;font:16px/1 PAVViceBold,PAVVice,Impact,sans-serif}
+html body .rp-overlay.rp-jobs .rp-job-cards>article button{border-radius:11px!important}
+html body .rp-overlay.rp-jobs .rp-job-cards>article button[data-start]{background:linear-gradient(90deg,#ffb36b,#ff5fa8 52%,#a97bff)!important;color:#1a0b1a!important;border:0!important;font-weight:800!important}
+html body .rp-overlay.rp-jobs .rp-job-cards>article button[data-route]{background:rgba(12,8,20,.7)!important;border:1px solid rgba(255,255,255,.16)!important;color:#f6f1ff!important}
+html body .rp-job-hud{border-radius:16px!important;border:1px solid rgba(255,95,168,.35)!important;background:linear-gradient(150deg,rgba(26,16,40,.92),rgba(13,8,21,.92))!important;box-shadow:0 14px 30px rgba(0,0,0,.4)!important}
+
+/* ---------- HUD editor: honour saved positions for every group (fixes vitals/account) ---------- */
+html body #pn-game.pav106.pav106 .p84-positioned,html body #pn-game.pav106.pav106 .pn-live>.p84-positioned{position:fixed!important;left:var(--hud-x84)!important;top:var(--hud-y84)!important;right:auto!important;bottom:auto!important;transform:scale(var(--hud-scale84))!important;transform-origin:top left!important}
+html body #pn-game.pav106.pav106 .p84-status-stack.p84-positioned{align-items:flex-start!important}
+html body #pn-game.pav106.pav106 .p84-status-stack.p84-positioned .pn-top-hud,html body #pn-game.pav106.pav106 .p84-status-stack.p84-positioned .p82-ammo{align-items:flex-start!important;text-align:left!important}
+
+@media (max-width:900px){html body #pn-game.pav106.pav106 .pn-money{font-size:28px!important}html body #pn-game.pav106.pav106 .pav-map-location{font-size:17px!important}html body #pn-game.pav106.pav106 .pn-top-hud{max-width:260px!important}}
+@media (prefers-reduced-motion:reduce){html body #pn-game.pav106.pav106 *,html body .rp-overlay.rp-jobs *{animation:none!important;transition:none!important}}

@@ -1,0 +1,28 @@
+# secrets and private files
+*.secret
+*secret*.txt
+*.pfx
+*.pem
+*.key
+.env
+PN-admin-login.txt
+.cloudflared/
+config.yml
+
+# databases, logs, caches
+*.db
+*.db-wal
+*.db-shm
+*.log
+__pycache__/
+node_modules/
+
+# game data and binaries (never commit)
+*.rpf
+*.wasm
+*.ytd
+*.ydr
+*.yft
+*.exe
+*.dll
+store.bin

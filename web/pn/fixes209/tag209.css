@@ -1,0 +1,3 @@
+/* 209: a nametag without armor showed a thin dark bar: the client hides the armor bar ([hidden]) but ui113.css forces
+   display:block!important on every bar, so the empty bar kept its dark outline. A hidden bar is not drawn at all. */
+html body #pn-game .pn-live .pn-tag .pav-tag-bars i[hidden]{display:none!important}

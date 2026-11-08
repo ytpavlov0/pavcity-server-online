@@ -1,0 +1,11 @@
+#pn-game .pav-drive21{bottom:calc(118px + env(safe-area-inset-bottom,0px));max-width:calc(100vw - 32px)}
+#pn-game .pav-drive21-title{align-items:center;min-width:0}
+#pn-game .pav-drive21-title strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+#pn-game .pav-drive21-title span{white-space:nowrap;flex-shrink:0}
+#pn-game .pav-drive21-footer{gap:12px;min-height:30px}
+#pn-game .pav-drive21-fuel i{flex-shrink:0;overflow:hidden}
+#pn-game .pav-drive21-fuel em{max-width:100%}
+.pav-pc-budget31{margin-top:16px;border:1px solid #aac9d52a;padding:18px;border-radius:10px;background:#17252d}
+.pav-pc-budget31 h3{margin:0 0 8px}.pav-pc-budget31 p{font-size:12px;line-height:1.6;color:#b4c4cb}
+.pav-pc-budget31 form{display:grid;grid-template-columns:1fr 1fr;gap:16px}.pav-pc-budget31 label{display:grid;gap:8px;font-size:12px}.pav-pc-budget31 input{width:100%;accent-color:#bced68}.pav-pc-budget31 output{color:#c6f477;font-variant-numeric:tabular-nums}.pav-budget-presets31{display:flex;gap:8px;margin:14px 0}
+@media(max-width:760px){#pn-game .pav-drive21{bottom:calc(120px + env(safe-area-inset-bottom,0px))}.pav-pc-budget31 form{grid-template-columns:1fr}}

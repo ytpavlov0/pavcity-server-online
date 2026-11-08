@@ -1,0 +1,34 @@
+/* PAVCITY UI 113: premium notifications, vehicle part panel, hold progress, nametag bars. */
+html body #pn-game .pav-infobox-stack{display:flex!important;flex-direction:column!important;gap:8px!important;width:min(360px,34vw)!important}
+html body #pn-game .pav-infobox.v113{position:relative!important;display:grid!important;grid-template-columns:38px 1fr 24px!important;align-items:center!important;gap:10px!important;padding:11px 12px 13px!important;border-radius:16px!important;overflow:hidden!important;border:1px solid rgba(255,255,255,.12)!important;background:linear-gradient(150deg,rgba(255,255,255,.09),rgba(255,255,255,.02) 40%),linear-gradient(160deg,rgba(28,18,44,.95),rgba(12,8,20,.95))!important;box-shadow:0 16px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12)!important;color:#f6f1ff!important;animation:v113In .32s cubic-bezier(.2,.8,.2,1) both}
+html body #pn-game .pav-infobox.v113.leaving{animation:v113Out .4s ease-in forwards}
+@keyframes v113In{from{opacity:0;transform:translateX(24px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes v113Out{to{opacity:0;transform:translateX(24px)}}
+html body #pn-game .pav-infobox.v113 .v113-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--k113-soft);color:var(--k113);box-shadow:inset 0 0 0 1px var(--k113-line)}
+html body #pn-game .pav-infobox.v113 .v113-icon .pav105-i{width:20px;height:20px}
+html body #pn-game .pav-infobox.v113 small{display:block;margin-bottom:3px;font:800 10px/1 PAVSource,'Segoe UI',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--k113)}
+html body #pn-game .pav-infobox.v113 strong{display:block;font:600 13px/1.35 PAVSource,'Segoe UI',sans-serif!important;color:#f6f1ff!important}
+html body #pn-game .pav-infobox.v113 button{display:grid!important;place-items:center;width:24px;height:24px;padding:0!important;border-radius:8px!important;background:rgba(255,255,255,.06)!important;border:0!important;color:#cfc4e2!important;cursor:pointer}
+html body #pn-game .pav-infobox.v113 button .pav105-i{width:12px;height:12px}
+html body #pn-game .pav-infobox.v113>i{position:absolute!important;left:0;right:0;bottom:0;height:3px;background:var(--k113)!important;transform-origin:left;animation:v113Life 6s linear forwards;opacity:.85}
+@keyframes v113Life{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+html body #pn-game .pav-infobox.v113.money{--k113:#7dffb4;--k113-soft:rgba(125,255,180,.12);--k113-line:rgba(125,255,180,.35)}
+html body #pn-game .pav-infobox.v113.success{--k113:#c59bff;--k113-soft:rgba(197,155,255,.12);--k113-line:rgba(197,155,255,.35)}
+html body #pn-game .pav-infobox.v113.warning{--k113:#ffcf5a;--k113-soft:rgba(255,207,90,.12);--k113-line:rgba(255,207,90,.35)}
+html body #pn-game .pav-infobox.v113.error{--k113:#ff6b7f;--k113-soft:rgba(255,107,127,.12);--k113-line:rgba(255,107,127,.4)}
+html body #pn-game .pav-infobox.v113.pm{--k113:#5ff2e0;--k113-soft:rgba(95,242,224,.12);--k113-line:rgba(95,242,224,.4)}
+@media (prefers-reduced-motion:reduce){html body #pn-game .pav-infobox.v113,html body #pn-game .pav-infobox.v113>i{animation:none!important}}
+/* Hold-E progress lives in the part chip again (112 had flattened the background). */
+html body #pn-game .pav-car-point22{background:linear-gradient(90deg,rgba(255,95,168,.55) var(--hold,0%),rgba(14,9,22,.88) var(--hold,0%))!important}
+/* Vehicle part panel (door / seat / window / lock). */
+html body #pn-game .rp-overlay.pav-part22 .rp-window{max-width:520px!important;border-radius:20px!important;background:linear-gradient(165deg,#1a1028,#0e0817 70%)!important;border:1px solid rgba(255,255,255,.14)!important;box-shadow:0 30px 70px rgba(0,0,0,.55)!important}
+html body #pn-game .rp-overlay.pav-part22 .pav-part-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+html body #pn-game .rp-overlay.pav-part22 .pav-part-actions p{grid-column:1/-1;margin:0 0 4px!important;font:700 13px/1.3 PAVSource,'Segoe UI',sans-serif!important;color:#cfc4e2!important;letter-spacing:.04em}
+html body #pn-game .rp-overlay.pav-part22 .pav-part-actions button{min-height:52px!important;padding:12px 14px!important;border-radius:14px!important;text-align:left!important;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02))!important;border:1px solid rgba(255,255,255,.12)!important;color:#f6f1ff!important;font:700 13px/1.2 PAVSource,'Segoe UI',sans-serif!important;transition:transform .15s,border-color .15s,background .15s}
+html body #pn-game .rp-overlay.pav-part22 .pav-part-actions button:hover{transform:translateY(-2px);border-color:rgba(255,95,168,.55)!important;background:linear-gradient(160deg,rgba(255,95,168,.16),rgba(169,123,255,.08))!important}
+html body #pn-game .rp-overlay.pav-part22 .pav-part-actions button[data-part-door]{background:linear-gradient(90deg,#ffb36b,#ff5fa8 52%,#a97bff)!important;color:#1a0b1a!important;border:0!important}
+/* Nametag health/armour: the rounded, glossy look of the HUD vitals. */
+html body #pn-game .pn-tag .pav-tag-bars{display:grid!important;gap:3px!important;width:84px!important;margin:4px auto 0!important}
+html body #pn-game .pn-tag .pav-tag-bars i{display:block!important;height:5px!important;border-radius:99px!important;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 60%),#ff5f7e!important;box-shadow:0 0 0 1px rgba(10,6,18,.75),0 0 6px rgba(255,95,126,.45)!important;transition:width .25s ease!important}
+html body #pn-game .pn-tag .pav-tag-bars i.pav-tag-armor{background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 60%),#a97bff!important;box-shadow:0 0 0 1px rgba(10,6,18,.75),0 0 6px rgba(169,123,255,.45)!important}
+html body #pn-game .pn-tag{will-change:transform;backface-visibility:hidden}

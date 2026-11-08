@@ -1,0 +1,5 @@
+/* PAVCITY perf 123: no per-paint filters on HUD items that change during play (ammo, header, money
+   icon, wanted stars); nametag bars keep a crisp outline instead of a blurred glow. */
+html body #pn-game .pn-live>.p82-ammo,html body #pn-game.pav106.pav106 .pn-top-hud>header strong,html body #pn-game.pav106.pav106 .pn-top-hud>header img,html body #pn-game.pav106.pav106 .pn-money .pav105-i,html body #pn-game.pav106.pav106 .p84-wanted{filter:none!important}
+html body #pn-game .pn-tag .pav-tag-bars i{box-shadow:0 0 0 1px rgba(10,6,18,.75)!important}
+html body #pn-game .pn-live>.pn-stats .pn-stat i{box-shadow:none!important}

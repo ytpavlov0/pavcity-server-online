@@ -1,0 +1,15 @@
+/* PAVCITY 134: AFK zone counter card */
+html body #pn-game .afk134{position:fixed;left:50%;top:96px;transform:translateX(-50%);z-index:33;width:min(340px,calc(100vw - 32px));padding:12px 14px;border-radius:18px;background:linear-gradient(180deg,rgba(28,18,43,.92),rgba(14,9,22,.92));border:1px solid rgba(169,123,255,.4);box-shadow:0 14px 34px rgba(0,0,0,.45),0 0 22px rgba(169,123,255,.18);color:#fff;pointer-events:none}
+html body #pn-game .afk134[hidden]{display:none}
+html body #pn-game .afk134 header{display:flex;align-items:center;gap:10px}
+html body #pn-game .afk134 header i{display:grid;place-items:center;width:32px;height:32px;border-radius:11px;background:linear-gradient(135deg,var(--v6-violet,#a97bff),var(--v6-pink,#ff5fa8));font-style:normal;font-size:16px}
+html body #pn-game .afk134 header small{display:block;font:800 9.5px/1 'Segoe UI',sans-serif;letter-spacing:.2em;color:var(--v6-pink,#ff5fa8)}
+html body #pn-game .afk134 header b{display:block;margin-top:3px;font:800 13.5px/1.1 PAVSource,'Segoe UI',sans-serif}
+html body #pn-game .afk134 header em{margin-left:auto;padding:5px 8px;border-radius:8px;background:rgba(61,220,132,.14);border:1px solid rgba(61,220,132,.45);color:#7ff0ad;font:800 9.5px/1 'Segoe UI',sans-serif;font-style:normal;letter-spacing:.12em}
+html body #pn-game .afk134-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+html body #pn-game .afk134-row span{padding:7px 8px;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)}
+html body #pn-game .afk134-row small{display:block;font:700 9.5px/1 'Segoe UI',sans-serif;color:rgba(246,241,255,.55)}
+html body #pn-game .afk134-row strong{display:block;margin-top:4px;font:800 13.5px/1 PAVSource,'Segoe UI',sans-serif;font-variant-numeric:tabular-nums}
+html body #pn-game .afk134-bar{height:5px;margin-top:10px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden}
+html body #pn-game .afk134-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--v6-violet,#a97bff),var(--v6-pink,#ff5fa8));transition:width .5s}
+html body #pn-game .afk134 p{margin:8px 0 0;font:600 11px/1.3 'Segoe UI',sans-serif;color:rgba(246,241,255,.65)}

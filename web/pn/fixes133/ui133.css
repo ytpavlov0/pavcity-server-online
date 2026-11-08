@@ -1,0 +1,7 @@
+/* PAVCITY 133: event chip under the top badge */
+html body #pn-game .ev133{position:fixed;left:50%;top:58px;transform:translateX(-50%);z-index:33;display:flex;align-items:center;gap:9px;padding:7px 14px 7px 8px;border-radius:999px;background:linear-gradient(90deg,rgba(255,179,107,.95),rgba(255,95,168,.95),rgba(169,123,255,.95));color:#1a0d22;box-shadow:0 8px 22px rgba(255,95,168,.3);pointer-events:none;animation:ev133 2.6s ease-in-out infinite}
+html body #pn-game .ev133[hidden]{display:none}
+html body #pn-game .ev133 i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.85);font-style:normal;font-size:12px}
+html body #pn-game .ev133 b{font:900 11.5px/1 PAVSource,'Segoe UI',sans-serif;letter-spacing:.08em}
+html body #pn-game .ev133 span{font:800 11.5px/1 'Segoe UI',sans-serif;font-variant-numeric:tabular-nums;opacity:.85}
+@keyframes ev133{50%{box-shadow:0 8px 30px rgba(255,95,168,.55)}}

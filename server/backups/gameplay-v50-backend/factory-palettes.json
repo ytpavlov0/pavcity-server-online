@@ -1,0 +1,214 @@
+{
+  "version": 200,
+  "purpose": "Only presentation defaults for missing saved paint; original factory choices, no startup save rewrite",
+  "models": {
+    "pavtofas": {
+      "palettes": [
+        {
+          "primary": 53,
+          "secondary": 111
+        }
+      ],
+      "source": "common/data/pavtofas/carvariations.meta",
+      "sourceSha256": "efe5edfb7d37482037a8ec1822246341e5214bf333266675d4b3afa2947f5f3d",
+      "archive": "backups/tofas49-release/runtime/x64/dlcPacks/pavcity36/dlc.rpf",
+      "archiveSha256": "c7b907927a61bd26adf2811c676e336080434af16aa5ddb62a4dbf6c4b4fadf8"
+    },
+    "pavbus": {
+      "palettes": [
+        {
+          "primary": 53,
+          "secondary": 111
+        }
+      ],
+      "source": "common/data/pavbus/carvariations.meta",
+      "sourceSha256": "eac24ed38faee7c66787d9860988c22e884b7e6e3bcef95cf41f54af2771290d",
+      "archive": "backups/tofas49-release/runtime/x64/dlcPacks/pavcity36/dlc.rpf",
+      "archiveSha256": "c7b907927a61bd26adf2811c676e336080434af16aa5ddb62a4dbf6c4b4fadf8"
+    },
+    "g65": {
+      "palettes": [
+        {
+          "primary": 1,
+          "secondary": 103
+        },
+        {
+          "primary": 2,
+          "secondary": 14
+        },
+        {
+          "primary": 5,
+          "secondary": 103
+        },
+        {
+          "primary": 0,
+          "secondary": 0
+        },
+        {
+          "primary": 112,
+          "secondary": 103
+        },
+        {
+          "primary": 62,
+          "secondary": 0
+        },
+        {
+          "primary": 49,
+          "secondary": 0
+        },
+        {
+          "primary": 96,
+          "secondary": 40
+        },
+        {
+          "primary": 4,
+          "secondary": 40
+        },
+        {
+          "primary": 31,
+          "secondary": 14
+        },
+        {
+          "primary": 0,
+          "secondary": 40
+        }
+      ],
+      "source": "common/data/g65/carvariations.meta",
+      "sourceSha256": "c34507ac9a359dead2ac9807e578188f6b02fadee531caed211b1221520c7018",
+      "archive": "backups/tofas49-release/runtime/x64/dlcPacks/pavcity36/dlc.rpf",
+      "archiveSha256": "c7b907927a61bd26adf2811c676e336080434af16aa5ddb62a4dbf6c4b4fadf8"
+    },
+    "audquattros": {
+      "palettes": [
+        {
+          "primary": 134,
+          "secondary": 6
+        },
+        {
+          "primary": 27,
+          "secondary": 6
+        },
+        {
+          "primary": 64,
+          "secondary": 6
+        },
+        {
+          "primary": 51,
+          "secondary": 6
+        },
+        {
+          "primary": 0,
+          "secondary": 6
+        }
+      ],
+      "source": "common/data/audquattros/carvariations.meta",
+      "sourceSha256": "d2f6884832846e210055b8480797dd99d5b07b2679c78ef2fefd6308960f15ed",
+      "archive": "backups/tofas49-release/runtime/x64/dlcPacks/pavcity36/dlc.rpf",
+      "archiveSha256": "c7b907927a61bd26adf2811c676e336080434af16aa5ddb62a4dbf6c4b4fadf8"
+    },
+    "i8": {
+      "palettes": [
+        {
+          "primary": 0,
+          "secondary": 0
+        },
+        {
+          "primary": 2,
+          "secondary": 2
+        },
+        {
+          "primary": 8,
+          "secondary": 8
+        },
+        {
+          "primary": 19,
+          "secondary": 19
+        },
+        {
+          "primary": 31,
+          "secondary": 31
+        },
+        {
+          "primary": 34,
+          "secondary": 34
+        },
+        {
+          "primary": 64,
+          "secondary": 64
+        },
+        {
+          "primary": 73,
+          "secondary": 73
+        },
+        {
+          "primary": 75,
+          "secondary": 75
+        },
+        {
+          "primary": 89,
+          "secondary": 89
+        },
+        {
+          "primary": 107,
+          "secondary": 107
+        }
+      ],
+      "source": "common/data/i8/carvariations.meta",
+      "sourceSha256": "5668fe15932460f18a68bae0157eb81341e55e022d8ae9d8e90e35cd8970661b",
+      "archive": "backups/tofas49-release/runtime/x64/dlcPacks/pavdonate/dlc.rpf",
+      "archiveSha256": "25fd5acf1e9df871804ae6dff368a23e46460a2bb256767f3a8c841f53a66e99"
+    },
+    "skyline": {
+      "palettes": [
+        {
+          "primary": 0,
+          "secondary": 0
+        },
+        {
+          "primary": 2,
+          "secondary": 2
+        },
+        {
+          "primary": 8,
+          "secondary": 8
+        },
+        {
+          "primary": 19,
+          "secondary": 19
+        },
+        {
+          "primary": 31,
+          "secondary": 31
+        },
+        {
+          "primary": 34,
+          "secondary": 34
+        },
+        {
+          "primary": 64,
+          "secondary": 64
+        },
+        {
+          "primary": 73,
+          "secondary": 73
+        },
+        {
+          "primary": 75,
+          "secondary": 75
+        },
+        {
+          "primary": 89,
+          "secondary": 89
+        },
+        {
+          "primary": 107,
+          "secondary": 107
+        }
+      ],
+      "source": "common/data/skyline/carvariations.meta",
+      "sourceSha256": "8a631a9eea21b57420f86a1ed8b45cc01bde51ec027d67ced35b604183dada9f",
+      "archive": "backups/tofas49-release/runtime/x64/dlcPacks/pavdonate/dlc.rpf",
+      "archiveSha256": "25fd5acf1e9df871804ae6dff368a23e46460a2bb256767f3a8c841f53a66e99"
+    }
+  }
+}

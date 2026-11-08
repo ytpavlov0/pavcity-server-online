@@ -1,0 +1,5 @@
+.p74-keyshop .rp-job-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px;margin-top:18px}
+.p74-keyshop .rp-job-cards article{padding:18px;border:1px solid #9ebbac36;border-radius:12px;background:#172a31}
+.p74-keyshop label{display:grid;gap:6px;margin:12px 0}.p74-keyshop select{max-width:100%;padding:10px}
+.p74-keyshop .rp-job-cards article>div{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin:10px 0}
+.p74-keyshop button[data-confirm]{border-color:#c4fc62;color:#c4fc62}.p74-keyshop button:disabled{opacity:.45;cursor:default}
